@@ -1,7 +1,7 @@
 # PROJECT_STATE.yaml - Structured current truth
 
 metadata:
-  updated_at: 2026-05-13T12:22:31+02:00
+  updated_at: 2026-05-13T13:00:00+02:00
   updated_by: agent
   version: "statedd-template-v3"
 
@@ -14,7 +14,7 @@ workflow:
     repo_investigated: true
     user_intake_complete: true
     unknowns_remaining:
-      - no Power BI Desktop report artifact has been built yet
+      - no Power BI Desktop report artifact has been built yet; only a browser design preview exists
       - no real Outlook, Power App or evaluation-system integration is connected yet
 
 verification_labels:
@@ -49,7 +49,8 @@ current_state:
       Manager demo for making invisible trainer work visible. The MVP combines
       fictive time registration, Outlook/Power App workload categories,
       trainer/course/session context, evaluation scores, open feedback themes
-      and fairness signals. The first milestone is a five-page Power BI report.
+      and fairness signals. A browser-verifiable five-page design preview exists;
+      the real Power BI PBIX/PBIP report remains open.
     primary_user: manager or teamlead
     secondary_user: trainer
     core_message: Dit maakt onzichtbaar trainerwerk zichtbaar.
@@ -59,18 +60,20 @@ current_state:
       judgement system.
 
   runtime_identity:
-    status: unknown
+    status: observed
     repo_path: /home/ff/Documents/Projects/PowerBi_Probeersel
     branch: main
-    head: not_embedded_self_referential
-    process_or_container: unknown
-    port_or_base_url: n/a for current source-only MVP
-    rebuilt_in_current_slice: unknown
-    duplicate_runtimes_checked: false
+    head: 0319bff_at_preview_capture_before_commit
+    process_or_container: python3 -m http.server
+    port_or_base_url: http://127.0.0.1:4173/demo-preview/
+    rebuilt_in_current_slice: true
+    duplicate_runtimes_checked: not_applicable_single_local_server_started_for_preview
     notes: |
-      No Power BI Desktop runtime artifact has been created or visually
-      accepted yet. Before accepting the demo, capture the PBIX/PBIP path,
-      screenshots and report version evidence.
+      Browser preview was served locally and captured with Playwright under
+      docs/evidence/001-powerbi-mvp-preview/. No Power BI Desktop runtime
+      artifact has been created or visually accepted yet. Before accepting the
+      real Power BI demo, capture the PBIX/PBIP path, screenshots and report
+      version evidence.
 
   environment:
     status: observed
@@ -162,14 +165,16 @@ current_state:
       - Power Platform skills are available under skills/power-platform with symlink adapters
     contradictions:
       - README.md still contains the generic StateDD template guide below the project overview
-      - no PBIX/PBIP exists yet, so report UX is specified but not runtime-verified
+      - no PBIX/PBIP exists yet; report UX is browser-preview verified but not Power BI runtime verified
 
   demo_assets:
     status: observed
     concept: docs/demo/CONCEPT.md
     demo_script: docs/demo/DEMO_SCRIPT.md
+    manager_walkthrough: docs/demo/MANAGER_WALKTHROUGH.md
     privacy_fairness: docs/demo/PRIVACY_FAIRNESS.md
     build_steps: docs/demo/BUILD_STEPS.md
+    browser_preview: demo-preview/
     data:
       - data/trainers.csv
       - data/courses.csv
@@ -189,7 +194,7 @@ current_state:
       ai: ai/feedback-summary.md
 
   mvp_pages:
-    status: specified
+    status: browser_preview_verified
     pages:
       - Management Overview
       - Trainer Workload
@@ -226,6 +231,7 @@ current_state:
     ledger: docs/EVIDENCE_LOG.md
     acceptance_freezes: docs/ACCEPTANCE_FREEZES.md
     artifact_root: docs/evidence
+    latest_artifact: docs/evidence/001-powerbi-mvp-preview/
     standard: browser_verification_or_test_output_for_user_facing_claims
 
   documentation:

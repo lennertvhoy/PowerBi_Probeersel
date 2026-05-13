@@ -1,0 +1,7 @@
+Power BI tooling probe
+powerbi: not found
+pbidesktop: not found
+pbi-tools: not found
+pbitool: not found
+powerbi-cli: not found
+Existing PBIX/PBIP artifacts:

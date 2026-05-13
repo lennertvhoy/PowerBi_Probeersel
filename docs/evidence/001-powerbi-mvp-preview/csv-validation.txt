@@ -1,0 +1,10 @@
+data/trainers.csv: OK schema, 4 rows
+data/courses.csv: OK schema, 6 rows
+data/sessions.csv: OK schema, 12 rows
+data/workload_entries.csv: OK schema, 46 rows
+data/evaluation_responses.csv: OK schema, 12 rows
+data/feedback_comments.csv: OK schema, 15 rows
+data/fairness_signals.csv: OK schema, 5 rows
+Relationship checks: OK
+Numeric checks: OK
+Demo CSV validation: PASSED

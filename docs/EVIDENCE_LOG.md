@@ -74,3 +74,26 @@
   as_of: 2026-05-13T12:45:00+02:00
   Notes: "No Power BI runtime artifact has been built or visually verified yet."
 ```
+
+## EV-2026-05-13-003: Browser preview and manager walkthrough verification
+
+```yaml
+- ID: EV-2026-05-13-003
+  File: /home/ff/Documents/Projects/PowerBi_Probeersel/docs/evidence/001-powerbi-mvp-preview/
+  Title: Five-page browser preview for manager demo rehearsal
+  Source/System: browser | shell
+  Route/Page: http://127.0.0.1:4173/demo-preview/
+  Action: served demo-preview with python3 -m http.server, captured five Playwright screenshots, ran CSV validation and state-doc validation
+  Shows:
+    - browser preview is explicitly labelled as Power BI design preview, not PBIX/PBIP
+    - fictive data label is visible
+    - all five intended report pages are represented
+    - fairness signals are framed as conversation prompts, not trainer ranking
+    - CSV schemas, relationships and numeric fields validate
+  Proves:
+    - BL-002 manager story can be rehearsed against a browser-verifiable artifact
+    - BL-001 has a verified fallback preview but no accepted real Power BI artifact
+  Type: docs-render-verification
+  as_of: 2026-05-13T13:00:00+02:00
+  Notes: "Power BI Desktop/PBIP tooling was not found; no .pbix or .pbip artifact exists in this slice."
+```

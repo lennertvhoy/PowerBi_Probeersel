@@ -13,11 +13,19 @@ verbetering van opleidingen.
 ## Project Quick Start
 
 1. Lees `docs/demo/CONCEPT.md`.
-2. Importeer de CSV-bestanden uit `data/` in Power BI Desktop.
-3. Maak de relaties uit `powerbi/model.md`.
-4. Voeg de measures uit `powerbi/measures.dax` toe.
-5. Bouw de vijf pagina's uit `powerbi/pages.md`.
-6. Gebruik `docs/demo/DEMO_SCRIPT.md` voor de manager-walkthrough.
+2. Voor een snelle manager-review: start de browser-preview met
+   `python3 -m http.server 4173` en open
+   `http://127.0.0.1:4173/demo-preview/`.
+3. Voor de echte Power BI-build: importeer de CSV-bestanden uit `data/` in
+   Power BI Desktop.
+4. Maak de relaties uit `powerbi/model.md`.
+5. Voeg de measures uit `powerbi/measures.dax` toe.
+6. Bouw de vijf pagina's uit `powerbi/pages.md`.
+7. Gebruik `docs/demo/DEMO_SCRIPT.md` en
+   `docs/demo/MANAGER_WALKTHROUGH.md` voor de manager-walkthrough.
+
+Let op: `demo-preview/` is een browser-verifieerbare design preview, geen
+`.pbix` of `.pbip` rapport.
 
 Belangrijke projectbestanden:
 
@@ -26,6 +34,8 @@ Belangrijke projectbestanden:
 | `docs/demo/CONCEPT.md` | Demo-concept en MVP-scope |
 | `docs/demo/PRIVACY_FAIRNESS.md` | Privacy- en fairness-regels |
 | `docs/demo/BUILD_STEPS.md` | Bouwstappen voor Power BI Desktop |
+| `docs/demo/MANAGER_WALKTHROUGH.md` | 3- en 8-minuten manager-walkthrough |
+| `demo-preview/` | Browser preview van de vijf beoogde Power BI-pagina's |
 | `data/` | Fictieve demo-data |
 | `powerbi/` | Model, measures, pagina's en thema |
 | `powerapp/input-spec.md` | Inputconcept voor workloadregistratie |

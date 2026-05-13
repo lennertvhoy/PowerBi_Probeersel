@@ -22,3 +22,8 @@ Use this file for dated session notes, verification summaries, and references to
 - Added Power BI model, DAX measures, report page specs and theme under `powerbi/`.
 - Added Power App input spec, Outlook category mapping, AI summary concept and manager demo docs.
 - Switched repo contract from bootstrap mode to operating mode.
+- Built a browser-verifiable Power BI design preview under `demo-preview/` because Power BI Desktop/PBIP tooling was not available in the Linux environment.
+- Added `docs/demo/MANAGER_WALKTHROUGH.md` with 3-minute and 8-minute manager walkthroughs plus privacy/fairness answers.
+- Added `scripts/validate_demo_data.py` and verified the fictive CSV schemas, relationships and numeric fields.
+- Captured five preview screenshots and validation outputs under `docs/evidence/001-powerbi-mvp-preview/`.
+- Marked BL-002 complete and BL-001 partial/open because no real `.pbix` or `.pbip` exists yet.

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fair Workload & Evaluation Cockpit - Browser Preview</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-shell">
+      <div>
+        <p class="eyebrow">Browser preview / Power BI design preview</p>
+        <h1>Fair Workload & Evaluation Cockpit</h1>
+        <p class="subtitle">Dit maakt onzichtbaar trainerwerk zichtbaar.</p>
+      </div>
+      <div class="truth-label">
+        <strong>Fictieve data</strong>
+        <span>Geen PBIX/PBIP. Geen echte Outlook-, Power App- of evaluatiesysteemintegratie.</span>
+      </div>
+    </header>
+
+    <nav class="page-tabs" aria-label="Report pages">
+      <button class="tab active" data-page="overview">Management Overview</button>
+      <button class="tab" data-page="trainer">Trainer Workload</button>
+      <button class="tab" data-page="course">Vak & Categorie Analyse</button>
+      <button class="tab" data-page="evaluation">Evaluatieanalyse</button>
+      <button class="tab" data-page="fairness">Fairness Signals</button>
+    </nav>
+
+    <main>
+      <section class="report-page active" id="overview" aria-labelledby="overview-title">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">Pagina 1</p>
+            <h2 id="overview-title">Team workload & kwaliteitsoverzicht</h2>
+          </div>
+          <p>We zien niet alleen lesuren, maar het volledige werk rond de opleiding.</p>
+        </div>
+        <div class="kpi-grid" id="overview-kpis"></div>
+        <div class="dashboard-grid two">
+          <section class="panel">
+            <h3>Uren per werkcategorie</h3>
+            <div id="category-bars" class="bar-stack"></div>
+          </section>
+          <section class="panel">
+            <h3>Zwaarste opleidingen</h3>
+            <div id="course-bars" class="ranked-bars"></div>
+          </section>
+          <section class="panel">
+            <h3>Feedbackthema's</h3>
+            <div id="theme-bars" class="ranked-bars compact"></div>
+          </section>
+          <section class="panel">
+            <h3>Actuele fairness-signalen</h3>
+            <div id="overview-signals" class="signal-list"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="report-page" id="trainer" aria-labelledby="trainer-title">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">Pagina 2</p>
+            <h2 id="trainer-title">Werkdruk per trainer</h2>
+          </div>
+          <p>Contacturen zijn zichtbaar; voorbereiding, nazorg, administratie en innovatie maken het beeld eerlijker.</p>
+        </div>
+        <div id="trainer-workload" class="trainer-layout"></div>
+        <section class="panel full">
+          <h3>Trainercontext</h3>
+          <div id="trainer-table" class="data-table"></div>
+        </section>
+      </section>
+
+      <section class="report-page" id="course" aria-labelledby="course-title">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">Pagina 3</p>
+            <h2 id="course-title">Welke opleidingen vragen de meeste tijd?</h2>
+          </div>
+          <p>Exchange Server vraagt structureel veel voorbereiding en nazorg: dat wijst eerder naar complexiteit, materiaal of planning.</p>
+        </div>
+        <div class="dashboard-grid two">
+          <section class="panel">
+            <h3>Voorbereiding per opleiding</h3>
+            <div id="prep-bars" class="ranked-bars"></div>
+          </section>
+          <section class="panel">
+            <h3>Prep/contact-ratio vs evaluatie</h3>
+            <div id="scatter" class="scatter"></div>
+          </section>
+          <section class="panel">
+            <h3>Opleiding per werkcategorie</h3>
+            <div id="course-matrix" class="data-table"></div>
+          </section>
+          <section class="panel">
+            <h3>Nazorg per opleiding</h3>
+            <div id="aftercare-bars" class="ranked-bars compact"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="report-page" id="evaluation" aria-labelledby="evaluation-title">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">Pagina 4</p>
+            <h2 id="evaluation-title">Evaluaties eerlijker interpreteren</h2>
+          </div>
+          <p>Een score is pas bruikbaar met context: vak, doelgroep, sessietype, complexiteit, responses en workload.</p>
+        </div>
+        <div class="dashboard-grid two">
+          <section class="panel">
+            <h3>Gemiddelde score per opleiding</h3>
+            <div id="score-course-bars" class="ranked-bars"></div>
+          </section>
+          <section class="panel">
+            <h3>Score per trainer met responses</h3>
+            <div id="score-trainer" class="data-table"></div>
+          </section>
+          <section class="panel">
+            <h3>Doelgroep en sessietype</h3>
+            <div id="audience-table" class="data-table"></div>
+          </section>
+          <section class="panel">
+            <h3>Feedbackcontext</h3>
+            <div id="feedback-table" class="data-table"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="report-page" id="fairness" aria-labelledby="fairness-title">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">Pagina 5</p>
+            <h2 id="fairness-title">Signalen voor eerlijkere planning</h2>
+          </div>
+          <p>Signalen zijn startpunten voor gesprek, geen automatische oordelen.</p>
+        </div>
+        <div id="fairness-cards" class="fairness-grid"></div>
+        <section class="panel full">
+          <h3>Managementacties</h3>
+          <div id="actions-table" class="data-table"></div>
+        </section>
+      </section>
+    </main>
+
+    <footer>
+      <strong>Gesprekskader:</strong> Deze data zegt niet wie goed of slecht is. Ze toont waar we beter moeten kijken.
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

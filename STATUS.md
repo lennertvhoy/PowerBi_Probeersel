@@ -1,8 +1,8 @@
 # PowerBi_Probeersel Status
 
-**Updated At:** 2026-05-13 12:22 CEST
+**Updated At:** 2026-05-13 13:00 CEST
 **Execution Mode:** operating
-**Project State:** demo_mvp_defined
+**Project State:** browser_preview_built
 **Public URL:** not configured
 
 ## Snapshot
@@ -11,17 +11,18 @@
 - Goal: make invisible trainer work visible so workload, support and evaluation are discussed more fairly.
 - MVP uses fictive CSV data, Power BI model/page specs, Power App input spec, Outlook category mapping and an optional AI feedback-summary layer.
 - Canonical Power Platform skills remain under `skills/power-platform/` with adapters for Claude, Codex, Kimi and Gemini.
-- Bootstrap baseline is complete enough for operating mode; next work is building the Power BI report from the prepared assets.
+- A browser-verifiable Power BI design preview exists under `demo-preview/` and mirrors the five intended report pages using the fictive CSV data.
+- Evidence for the preview is logged under `docs/evidence/001-powerbi-mvp-preview/`.
 
 ## Immediate Priorities
 
-1. Build the Power BI report from `data/` and `powerbi/`.
-2. Validate the five report pages against the demo script.
-3. Prepare one manager-ready walkthrough with privacy/fairness framing.
+1. Build the real Power BI report from `data/` and `powerbi/` when Power BI Desktop/PBIP tooling is available.
+2. Use `demo-preview/` and `docs/demo/MANAGER_WALKTHROUGH.md` for the manager story rehearsal.
+3. Keep privacy/fairness framing explicit before using any real trainer data.
 
 ## Active Blockers
 
-- No `.pbix` or `.pbip` report has been built yet.
+- No `.pbix` or `.pbip` report has been built yet; Power BI Desktop/PBIP tooling was not found in the current Linux environment.
 - No real Outlook, Power App or evaluation-system integration is connected yet.
 
 ## Notes

@@ -1,6 +1,6 @@
 # NEXT_ACTIONS - Active Execution Queue
 
-**Updated At:** 2026-05-13 12:22 CEST
+**Updated At:** 2026-05-13 13:00 CEST
 **Execution Mode:** operating
 **Max Items:** 10
 
@@ -9,14 +9,8 @@
 ### P1 [BL-001] Build Power BI MVP
 
 Owner: human + coding agent.
-Next action: import `data/*.csv` into Power BI Desktop, create relationships from `powerbi/model.md`, add measures from `powerbi/measures.dax`, and build pages from `powerbi/pages.md`.
+Next action: when Power BI Desktop/PBIP tooling is available, import `data/*.csv`, create relationships from `powerbi/model.md`, add measures from `powerbi/measures.dax`, and build pages from `powerbi/pages.md`. Use `demo-preview/` as the verified design reference.
 Exit criteria: a local `.pbix` or `.pbip` report exists with all five demo pages.
-
-### P2 [BL-002] Validate manager demo flow
-
-Owner: human + coding agent.
-Next action: run through `docs/demo/DEMO_SCRIPT.md` using the report and confirm that the fairness message is clear.
-Exit criteria: walkthrough notes and screenshots/evidence are logged under `docs/evidence/`.
 
 ## Queue Rules
 
