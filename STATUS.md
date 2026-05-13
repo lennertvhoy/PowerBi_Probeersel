@@ -1,9 +1,8 @@
 # PowerBi_Probeersel Status
 
-**Updated At:** 2026-05-13 13:00 CEST
+**Updated At:** 2026-05-13 14:30 CEST
 **Execution Mode:** operating
-**Project State:** browser_preview_built
-**Public URL:** not configured
+**Project State:** gui_agent_enabled
 
 ## Snapshot
 
@@ -13,17 +12,23 @@
 - Canonical Power Platform skills remain under `skills/power-platform/` with adapters for Claude, Codex, Kimi and Gemini.
 - A browser-verifiable Power BI design preview exists under `demo-preview/` and mirrors the five intended report pages using the fictive CSV data.
 - Evidence for the preview is logged under `docs/evidence/001-powerbi-mvp-preview/`.
+- **Windows GUI MCP agent is now operational** — Power BI Desktop can be launched, focused, interacted with via keyboard/mouse, and screenshotted from OpenCode.
 
 ## Immediate Priorities
 
-1. Build the real Power BI report from `data/` and `powerbi/` when Power BI Desktop/PBIP tooling is available.
+1. Build the real Power BI report from `data/` and `powerbi/` using the Windows GUI MCP agent.
 2. Use `demo-preview/` and `docs/demo/MANAGER_WALKTHROUGH.md` for the manager story rehearsal.
 3. Keep privacy/fairness framing explicit before using any real trainer data.
 
 ## Active Blockers
 
-- No `.pbix` or `.pbip` report has been built yet; Power BI Desktop/PBIP tooling was not found in the current Linux environment.
+- No `.pbix` or `.pbip` report has been built yet.
 - No real Outlook, Power App or evaluation-system integration is connected yet.
+
+## Infrastructure Milestones
+
+- **Windows GUI MCP agent**: Proven working (12/12 tests passed). OpenCode can now control Windows apps via pywinauto + pyautogui. See `docs/evidence/003-windows-gui-agent/`.
+- **Power BI Desktop**: Found at `C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`, controllable via MCP.
 
 ## Notes
 
