@@ -1,0 +1,6 @@
+interface:
+  display_name: "PCF Controls"
+  short_description: "Build Power Apps Component Framework controls"
+  default_prompt: "Use $pcf-controls to scaffold, implement, package, or review a Power Apps Component Framework control."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,46 @@
+# PROJECT_ADAPTER.yaml - Optional project-specific adapter
+
+version: "statedd-template-v3"
+
+project:
+  name: PowerBi_Probeersel
+  short_name: PowerBi_Probeersel
+  description: "Bootstrap adapter for a Power BI / Power Platform project; product-specific details are still unknown."
+
+vocabulary:
+  control_plane_name: "control plane"
+  state_plane_name: "state plane"
+  evidence_plane_name: "evidence plane"
+  runtime_identity_name: "runtime identity"
+
+runtime:
+  frontend_port: null
+  api_port: null
+  public_url: null
+  execution_mode: bootstrap
+  runtime_identity_surface: null
+
+integrations: []
+skills:
+  canonical_root: skills/power-platform
+  adapters:
+    claude: .claude/skills
+    codex: .codex/skills
+    kimi: .kimi/plugins
+    gemini_context: GEMINI.md
+    gemini_extension: .gemini/extensions/power-platform-skills
+  installed:
+    - code-review
+    - dataverse-plugins
+    - dataverse-web-api
+    - dataverse-web-resources
+    - pcf-controls
+    - plan-with-team
+    - power-apps-code-apps
+    - record-screen
+    - visual-qa
+
+notes:
+  - "Populate runtime and integration fields after bootstrap intake."
+  - "Edit canonical skills under skills/power-platform, not adapter symlinks."
+  - "Keep PROJECT_DNA.yaml focused on invariants."

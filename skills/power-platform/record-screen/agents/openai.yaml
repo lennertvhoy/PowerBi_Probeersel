@@ -1,0 +1,6 @@
+interface:
+  display_name: "Record Screen"
+  short_description: "Record Chrome tabs with captions via CLI"
+  default_prompt: "Use $record-screen to record a Chrome tab with action captions for demo or QA evidence."
+policy:
+  allow_implicit_invocation: true

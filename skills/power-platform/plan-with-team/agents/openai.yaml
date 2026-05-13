@@ -1,0 +1,6 @@
+interface:
+  display_name: "Power Platform Planning"
+  short_description: "Plan Dataverse apps with specialist perspectives"
+  default_prompt: "Use $plan-with-team to plan this Power Platform app with data architecture, UX flow, and skeptic review perspectives."
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Power Apps Code Apps"
+  short_description: "Build Power Apps Code Apps with TypeScript"
+  default_prompt: "Use $power-apps-code-apps to scaffold, build, debug, or deploy a Power Apps Code App."
+policy:
+  allow_implicit_invocation: true

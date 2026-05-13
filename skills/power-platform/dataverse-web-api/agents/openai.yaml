@@ -1,0 +1,6 @@
+interface:
+  display_name: "Dataverse Web API"
+  short_description: "Create and query Dataverse metadata via API"
+  default_prompt: "Use $dataverse-web-api to design or implement Dataverse tables, columns, relationships, views, forms, and ALM operations."
+policy:
+  allow_implicit_invocation: true

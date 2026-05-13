@@ -1,0 +1,193 @@
+# PROJECT_STATE.yaml - Structured current truth
+
+metadata:
+  updated_at: 2026-05-13T12:22:31+02:00
+  updated_by: agent
+  version: "statedd-template-v3"
+
+workflow:
+  repo_mode: bootstrap
+  bootstrap:
+    completed: false
+    completed_on: null
+    system_investigated: true
+    repo_investigated: true
+    user_intake_complete: false
+    unknowns_remaining:
+      - product purpose not yet defined by user
+      - primary user or operator not yet defined by user
+      - target deployment/runtime not yet defined by user
+      - first real milestone not yet defined by user
+
+verification_labels:
+  observed: verified directly in the current session
+  unknown: not yet determined from currently available evidence
+  reported: supported by prior evidence, not re-verified
+  blocked: verification attempted but prevented
+  assumed: temporary working assumption
+  stale: previously verified but no longer fresh
+  invalid: known false or superseded
+
+current_state:
+  repository:
+    canonical_path: /home/ff/Documents/Projects/PowerBi_Probeersel
+    path_status: observed
+    branch: main
+    head: null
+
+  operating_mode:
+    status: observed
+    mode: bootstrap
+    summary: |
+      This repository is currently in bootstrap mode. It should not flip to
+      operating mode until the baseline state, backlog, queue, and evidence are
+      truthfully established.
+
+  project:
+    name: PowerBi_Probeersel
+    type: bootstrap_repository
+    lifecycle_stage: bootstrap
+    truth_summary: >
+      StateDD bootstrap scaffold installed at the repository root with Power
+      Platform skills normalized under skills/power-platform and exposed through
+      adapter paths for Claude, Codex, Kimi, and Gemini. Product purpose, target
+      runtime, users, and milestone remain unknown until user intake.
+
+  runtime_identity:
+    status: unknown
+    repo_path: /home/ff/Documents/Projects/PowerBi_Probeersel
+    branch: main
+    head: null
+    process_or_container: unknown
+    port_or_base_url: unknown
+    rebuilt_in_current_slice: unknown
+    duplicate_runtimes_checked: false
+    notes: |
+      Fill this section before accepting user-facing behavior or investigating
+      a visual/runtime regression.
+
+  environment:
+    status: observed
+    host:
+      os: Linux 6.19.13-200.fc43.x86_64
+      kernel: #1 SMP PREEMPT_DYNAMIC Sat Apr 18 20:20:44 UTC 2026
+      shell: /bin/bash
+      terminal: xterm-256color
+    package_managers:
+      - dnf: observed
+      - npm: observed
+    language_runtimes:
+      python: 3.14.4
+      node: v22.22.0
+      npm: 10.9.4
+      dotnet: not found
+    container_tooling:
+      podman: present
+      docker: absent
+    browser_tooling:
+      chrome: present
+    ports:
+      listeners: observed
+      notes: |
+        Active listeners were observed with ss during bootstrap. None were
+        identified as this repository's runtime.
+
+  repository_structure:
+    status: observed
+    top_level_entries:
+      - .claude
+      - .codex
+      - .gemini
+      - .github
+      - .git
+      - .gitignore
+      - .kimi
+      - adapters
+      - docs
+      - fixtures
+      - prompts
+      - scripts
+      - skills
+      - AGENTS.md
+      - BACKLOG.md
+      - GEMINI.md
+      - LICENSE
+      - NEXT_ACTIONS.md
+      - PROJECT_ADAPTER.yaml
+      - PROJECT_DNA.yaml
+      - PROJECT_STATE.yaml
+      - README.md
+      - STATUS.md
+      - WORKLOG.md
+    manifests:
+      - README.md
+      - GEMINI.md
+      - skills/power-platform/*/SKILL.md
+      - skills/power-platform/*/agents/openai.yaml
+      - .gemini/extensions/power-platform-skills/gemini-extension.json
+      - scripts/init_template.py
+      - scripts/check_state_docs.py
+      - scripts/test_init_template.py
+    entrypoints:
+      - scripts/init_template.py
+      - scripts/check_state_docs.py
+      - scripts/test_init_template.py
+    test_setup:
+      - scripts/check_state_docs.py
+      - scripts/test_init_template.py
+    deployment_assumptions:
+      - no application deployment target has been established
+      - StateDD workflow assets are available for repo governance
+      - Power Platform skills are available under skills/power-platform with symlink adapters
+    contradictions:
+      - README.md still describes the generic StateDD template, not the final product
+      - project-specific product/runtime contradictions not yet investigated
+
+  skills:
+    status: observed
+    canonical_root: skills/power-platform
+    adapters:
+      claude: .claude/skills
+      codex: .codex/skills
+      kimi: .kimi/plugins
+      gemini_root_context: GEMINI.md
+      gemini_extension: .gemini/extensions/power-platform-skills
+    installed:
+      - code-review
+      - dataverse-plugins
+      - dataverse-web-api
+      - dataverse-web-resources
+      - pcf-controls
+      - plan-with-team
+      - power-apps-code-apps
+      - record-screen
+      - visual-qa
+    notes: |
+      Canonical skill content is platform-neutral. Adapter directories expose
+      the same folders to common agent runtimes without maintaining divergent
+      copies.
+
+  evidence:
+    status: active
+    ledger: docs/EVIDENCE_LOG.md
+    acceptance_freezes: docs/ACCEPTANCE_FREEZES.md
+    artifact_root: docs/evidence
+    standard: browser_verification_or_test_output_for_user_facing_claims
+
+  documentation:
+    status: observed
+    primary_user_guide: README.md
+    live_docs:
+      - README.md
+      - AGENTS.md
+      - STATUS.md
+      - PROJECT_STATE.yaml
+      - PROJECT_DNA.yaml
+      - PROJECT_ADAPTER.yaml
+      - NEXT_ACTIONS.md
+      - BACKLOG.md
+      - WORKLOG.md
+      - docs/EVIDENCE_LOG.md
+      - docs/ACCEPTANCE_FREEZES.md
+
+active_problems: []

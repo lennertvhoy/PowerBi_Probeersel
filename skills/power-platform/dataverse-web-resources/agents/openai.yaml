@@ -1,0 +1,6 @@
+interface:
+  display_name: "Dataverse Web Resources"
+  short_description: "Build Dataverse form scripts and web resources"
+  default_prompt: "Use $dataverse-web-resources to create or deploy Dataverse JavaScript, HTML, ribbon, navigation, or form web resources."
+policy:
+  allow_implicit_invocation: true
