@@ -1,3 +1,39 @@
+# Fair Workload & Evaluation Cockpit
+
+Manager-demo voor trainer workload en evaluatiecontext.
+
+**Kernboodschap:** dit maakt onzichtbaar trainerwerk zichtbaar.
+
+De demo combineert fictieve tijdsregistratie, Outlook/Power App-categorieen,
+trainer-, vak- en sessiecontext, evaluatiescores, open feedbackthema's en
+fairness-signalen in een Power BI-cockpit. Het doel is niet meer controle op
+trainers, maar eerlijkere werkverdeling, betere ondersteuning en gerichtere
+verbetering van opleidingen.
+
+## Project Quick Start
+
+1. Lees `docs/demo/CONCEPT.md`.
+2. Importeer de CSV-bestanden uit `data/` in Power BI Desktop.
+3. Maak de relaties uit `powerbi/model.md`.
+4. Voeg de measures uit `powerbi/measures.dax` toe.
+5. Bouw de vijf pagina's uit `powerbi/pages.md`.
+6. Gebruik `docs/demo/DEMO_SCRIPT.md` voor de manager-walkthrough.
+
+Belangrijke projectbestanden:
+
+| Pad | Doel |
+| --- | --- |
+| `docs/demo/CONCEPT.md` | Demo-concept en MVP-scope |
+| `docs/demo/PRIVACY_FAIRNESS.md` | Privacy- en fairness-regels |
+| `docs/demo/BUILD_STEPS.md` | Bouwstappen voor Power BI Desktop |
+| `data/` | Fictieve demo-data |
+| `powerbi/` | Model, measures, pagina's en thema |
+| `powerapp/input-spec.md` | Inputconcept voor workloadregistratie |
+| `outlook/category-mapping.md` | Outlook-categorie mapping |
+| `ai/feedback-summary.md` | Optionele AI-laag |
+
+---
+
 # State Driven Development Template
 
 AI-assisted software projects drift.

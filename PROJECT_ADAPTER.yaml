@@ -5,7 +5,7 @@ version: "statedd-template-v3"
 project:
   name: PowerBi_Probeersel
   short_name: PowerBi_Probeersel
-  description: "Bootstrap adapter for a Power BI / Power Platform project; product-specific details are still unknown."
+  description: "Fair Workload & Evaluation Cockpit demo for trainer workload, evaluation context and management fairness signals."
 
 vocabulary:
   control_plane_name: "control plane"
@@ -17,10 +17,35 @@ runtime:
   frontend_port: null
   api_port: null
   public_url: null
-  execution_mode: bootstrap
-  runtime_identity_surface: null
+  execution_mode: operating
+  runtime_identity_surface: Power BI Desktop report or exported report artifact
 
-integrations: []
+demo:
+  product_name: Fair Workload & Evaluation Cockpit
+  primary_user: manager or teamlead
+  secondary_user: trainer
+  data_mode: fictive_demo_data
+  first_milestone: five-page Power BI MVP
+  pages:
+    - Management Overview
+    - Trainer Workload
+    - Vak & Categorie Analyse
+    - Evaluatieanalyse
+    - Fairness Signals
+
+integrations:
+  - name: Power BI
+    status: planned
+    purpose: report and analysis layer
+  - name: Power App
+    status: specified
+    purpose: lightweight workload entry and enrichment
+  - name: Outlook
+    status: specified
+    purpose: low-friction category source for calendar workload
+  - name: AI feedback summary
+    status: optional
+    purpose: summarize open evaluation comments and suggest categories
 skills:
   canonical_root: skills/power-platform
   adapters:
@@ -41,6 +66,7 @@ skills:
     - visual-qa
 
 notes:
-  - "Populate runtime and integration fields after bootstrap intake."
+  - "Use fictive or anonymized data for demos."
+  - "Frame fairness signals as conversation prompts, not verdicts."
   - "Edit canonical skills under skills/power-platform, not adapter symlinks."
   - "Keep PROJECT_DNA.yaml focused on invariants."

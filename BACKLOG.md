@@ -1,7 +1,7 @@
 # BACKLOG - Strategic Roadmap
 
-**Product:** PowerBi_Probeersel
-**Execution Mode:** bootstrap
+**Product:** Fair Workload & Evaluation Cockpit
+**Execution Mode:** operating
 **Updated At:** 2026-05-13
 
 ## Purpose
@@ -11,20 +11,22 @@ Reference these IDs from `NEXT_ACTIONS.md`.
 
 ## NOW
 
-- [BL-001] Establish the project identity, primary user, and first milestone.
-- [BL-002] Capture the initial runtime, deployment, integration, and constraint baseline in the state files.
+- [BL-001] Build the first Power BI Desktop report from the prepared CSV data, model, measures and page specs.
+- [BL-002] Validate the demo story against the five-page flow and privacy/fairness framing.
 
 ## NEXT
 
-- [BL-003] Prepare the first active queue and bootstrap evidence trail.
+- [BL-003] Add a simple Power App or Dataverse prototype for workload input.
+- [BL-004] Add an Outlook import/enrichment path for calendar categories.
 - [BL-005] Verify agent skill adapters in the actual CLIs the project will use.
 
 ## LATER
 
-- [BL-004] Enter operating mode only after the baseline is truthful and the backlog is real.
+- [BL-006] Convert the Power BI report into a versionable PBIP project if the local Power BI toolchain supports it.
+- [BL-007] Replace fictive data with anonymized real sample data after privacy approval.
 
 ## WATCHLIST
 
 - Queue bloat.
 - Unverified claims.
-- Premature operating-mode transition.
+- Dashboard being interpreted as trainer ranking instead of fairness/support signal.

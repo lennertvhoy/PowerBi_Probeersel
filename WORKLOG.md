@@ -17,3 +17,8 @@ Use this file for dated session notes, verification summaries, and references to
 - Added Gemini CLI context through root `GEMINI.md` and `.gemini/extensions/power-platform-skills/`.
 - Added Codex UI metadata files under each skill's `agents/openai.yaml`.
 - Removed extracted source clone directories after their contents were installed into canonical repo paths.
+- Completed product bootstrap for the Fair Workload & Evaluation Cockpit.
+- Added fictive trainer/course/session/workload/evaluation/feedback/fairness CSV data under `data/`.
+- Added Power BI model, DAX measures, report page specs and theme under `powerbi/`.
+- Added Power App input spec, Outlook category mapping, AI summary concept and manager demo docs.
+- Switched repo contract from bootstrap mode to operating mode.

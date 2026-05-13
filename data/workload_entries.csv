@@ -1,0 +1,47 @@
+EntryId,Date,TrainerId,CourseId,SessionId,Category,Hours,Source,Description
+W001,2026-01-07,T001,C002,S001,Voorbereiding,5.5,Power App,Labomgeving Exchange nakijken
+W002,2026-01-08,T001,C002,S001,Lesgeven,6,Outlook,Exchange Server praktijklab
+W003,2026-01-09,T001,C002,S001,Nazorg,2.5,Outlook,Vragen cursisten en extra uitleg
+W004,2026-01-09,T001,C002,S001,Administratie,0.75,Power App,Evaluaties en aanwezigheden
+W005,2026-01-10,T002,C005,S002,Voorbereiding,1.5,Outlook,Power BI basis voorbereiden
+W006,2026-01-10,T002,C005,S002,Lesgeven,4,Outlook,Workshop Power BI basis
+W007,2026-01-11,T002,C005,S002,Nazorg,0.5,Power App,Bestanden nasturen
+W008,2026-01-11,T002,C005,S002,AI/innovatie,3,Power App,Dashboard concept Jarno
+W009,2026-01-14,T003,C001,S003,Voorbereiding,2,Outlook,Windows 11 slides updaten
+W010,2026-01-15,T003,C001,S003,Lesgeven,6,Outlook,Windows 11 beheer
+W011,2026-01-16,T003,C001,S003,Nazorg,1,Power App,Extra policy-links sturen
+W012,2026-01-20,T004,C006,S004,Voorbereiding,1,Outlook,Cybersecurity webinar voorbereiden
+W013,2026-01-20,T004,C006,S004,Lesgeven,2,Outlook,Cybersecurity awareness webinar
+W014,2026-01-20,T004,C006,S004,Administratie,0.5,Power App,Evaluaties verwerken
+W015,2026-02-01,T001,C004,S005,Voorbereiding,6,Power App,Nieuwe AI-demo's bouwen
+W016,2026-02-02,T001,C004,S005,Materiaalontwikkeling,4,Power App,Promptkaarten en oefeningen maken
+W017,2026-02-03,T001,C004,S005,Lesgeven,4,Outlook,AI voor productiviteit workshop
+W018,2026-02-04,T001,C004,S005,Nazorg,2,Outlook,Prompts en links nasturen
+W019,2026-02-06,T002,C005,S006,Voorbereiding,1,Outlook,Power BI dataset refresh
+W020,2026-02-07,T002,C005,S006,Lesgeven,4,Outlook,Power BI basis
+W021,2026-02-08,T002,C005,S006,AI/innovatie,4,Power App,Fair workload demo verder uitwerken
+W022,2026-02-11,T003,C002,S007,Voorbereiding,4.5,Outlook,Exchange lab voorbereiden
+W023,2026-02-12,T003,C002,S007,Lesgeven,6,Outlook,Exchange Server praktijklab
+W024,2026-02-13,T003,C002,S007,Nazorg,3,Power App,Mailbox troubleshooting vragen
+W025,2026-02-14,T003,C002,S007,Administratie,1,Power App,Evaluatiefeedback verwerken
+W026,2026-02-17,T004,C003,S008,Voorbereiding,5,Power App,Nieuwe netwerkmodules leren
+W027,2026-02-18,T004,C003,S008,Lesgeven,6,Outlook,Netwerken praktijklab
+W028,2026-02-19,T004,C003,S008,Nazorg,2,Outlook,Subnetting extra uitleg
+W029,2026-02-19,T004,C003,S008,Verplaatsing,1.5,Outlook,Verplaatsing Antwerpen
+W030,2026-03-02,T001,C003,S009,Voorbereiding,5,Power App,Nieuwe subnetting oefeningen
+W031,2026-03-04,T001,C003,S009,Lesgeven,6,Outlook,Netwerken praktijklab
+W032,2026-03-05,T001,C003,S009,Nazorg,3.5,Outlook,Extra uitleg en mails
+W033,2026-03-08,T002,C004,S010,Voorbereiding,4,Power App,AI-workshop actualiseren
+W034,2026-03-09,T002,C004,S010,Lesgeven,4,Outlook,AI voor productiviteit workshop
+W035,2026-03-10,T002,C004,S010,Materiaalontwikkeling,3,Power App,Herbruikbare AI-oefeningen
+W036,2026-03-10,T002,C004,S010,AI/innovatie,2,Power App,AI-samenvatting demo testen
+W037,2026-03-14,T003,C006,S011,Voorbereiding,1,Outlook,Cybersecurity webinar
+W038,2026-03-14,T003,C006,S011,Lesgeven,2,Outlook,Cybersecurity awareness
+W039,2026-03-15,T003,C006,S011,Nazorg,0.5,Power App,FAQ sturen
+W040,2026-03-20,T004,C002,S012,Voorbereiding,4,Outlook,Exchange Server herhaling
+W041,2026-03-21,T004,C002,S012,Lesgeven,6,Outlook,Exchange Server praktijklab
+W042,2026-03-22,T004,C002,S012,Nazorg,3,Power App,Extra troubleshooting uitleg
+W043,2026-03-22,T004,C002,S012,Administratie,1,Power App,Evaluaties verwerken
+W044,2026-03-23,T002,,,"AI/innovatie",5,Power App,Power BI workload cockpit bouwen
+W045,2026-03-24,T001,C004,,Overleg,1.5,Outlook,Afstemming AI-aanbod
+W046,2026-03-24,T003,C002,,Overleg,1,Outlook,Exchange materiaal bespreken

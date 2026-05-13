@@ -52,3 +52,25 @@
   as_of: 2026-05-13T12:25:00+02:00
   Notes: "Evidence is currently command-output based; no user-facing runtime exists yet."
 ```
+
+## EV-2026-05-13-002: Demo baseline and bootstrap completion
+
+```yaml
+- ID: EV-2026-05-13-002
+  File: repository files in current Codex session
+  Title: Fair Workload & Evaluation Cockpit baseline
+  Source/System: source-data
+  Route/Page: n/a
+  Action: added demo concept, fictive CSV data, Power BI model specs, DAX measures, page definitions, Power App input spec, Outlook mapping, AI summary concept, and updated StateDD mode to operating
+  Shows:
+    - product identity and MVP scope are recorded
+    - demo data exists under data/
+    - Power BI build instructions exist under docs/demo/BUILD_STEPS.md
+    - report model and page specs exist under powerbi/
+  Proves:
+    - bootstrap product intake is complete enough to enter operating mode
+    - next work can start from a concrete Power BI MVP backlog item
+  Type: source-data
+  as_of: 2026-05-13T12:45:00+02:00
+  Notes: "No Power BI runtime artifact has been built or visually verified yet."
+```

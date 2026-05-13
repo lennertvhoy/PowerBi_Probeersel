@@ -1,0 +1,7 @@
+CourseId,Course,Domain,ComplexityScore,DefaultSessionType
+C001,Windows 11 beheer,Windows,3,Klassikaal
+C002,Exchange Server,Messaging,5,Praktijklab
+C003,Netwerken,Infrastructure,4,Praktijklab
+C004,AI voor productiviteit,AI,4,Workshop
+C005,Power BI basis,Data,3,Workshop
+C006,Cybersecurity awareness,Security,3,Webinar

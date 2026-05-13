@@ -1,28 +1,28 @@
 # PowerBi_Probeersel Status
 
 **Updated At:** 2026-05-13 12:22 CEST
-**Execution Mode:** bootstrap
-**Project State:** bootstrap_initializing
+**Execution Mode:** operating
+**Project State:** demo_mvp_defined
 **Public URL:** not configured
 
 ## Snapshot
 
-- Repo initialized in bootstrap mode at `/home/ff/Documents/Projects/PowerBi_Probeersel`.
-- StateDD template files are installed at the repository root.
-- Power Platform skills are normalized under `skills/power-platform/`.
-- Adapter paths exist for Claude (`.claude/skills/`), Codex (`.codex/skills/`), Kimi (`.kimi/plugins/`), and Gemini (`GEMINI.md` plus `.gemini/extensions/power-platform-skills/`).
-- Source clone folders were removed after extraction to avoid duplicate sources of truth.
-- Project-specific product truth still needs user intake before operating mode.
+- Project is the **Fair Workload & Evaluation Cockpit** demo.
+- Goal: make invisible trainer work visible so workload, support and evaluation are discussed more fairly.
+- MVP uses fictive CSV data, Power BI model/page specs, Power App input spec, Outlook category mapping and an optional AI feedback-summary layer.
+- Canonical Power Platform skills remain under `skills/power-platform/` with adapters for Claude, Codex, Kimi and Gemini.
+- Bootstrap baseline is complete enough for operating mode; next work is building the Power BI report from the prepared assets.
 
 ## Immediate Priorities
 
-1. Capture the real project identity, primary user, and first milestone.
-2. Capture target runtime and integration constraints.
-3. Transition to operating mode only once baseline truth exists.
+1. Build the Power BI report from `data/` and `powerbi/`.
+2. Validate the five report pages against the demo script.
+3. Prepare one manager-ready walkthrough with privacy/fairness framing.
 
 ## Active Blockers
 
-- User intake is still needed for product purpose, target runtime, constraints, and milestone.
+- No `.pbix` or `.pbip` report has been built yet.
+- No real Outlook, Power App or evaluation-system integration is connected yet.
 
 ## Notes
 

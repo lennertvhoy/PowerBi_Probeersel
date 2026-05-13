@@ -6,18 +6,16 @@ metadata:
   version: "statedd-template-v3"
 
 workflow:
-  repo_mode: bootstrap
+  repo_mode: operating
   bootstrap:
-    completed: false
-    completed_on: null
+    completed: true
+    completed_on: 2026-05-13
     system_investigated: true
     repo_investigated: true
-    user_intake_complete: false
+    user_intake_complete: true
     unknowns_remaining:
-      - product purpose not yet defined by user
-      - primary user or operator not yet defined by user
-      - target deployment/runtime not yet defined by user
-      - first real milestone not yet defined by user
+      - no Power BI Desktop report artifact has been built yet
+      - no real Outlook, Power App or evaluation-system integration is connected yet
 
 verification_labels:
   observed: verified directly in the current session
@@ -33,38 +31,46 @@ current_state:
     canonical_path: /home/ff/Documents/Projects/PowerBi_Probeersel
     path_status: observed
     branch: main
-    head: null
+    head: not_embedded_self_referential
 
   operating_mode:
     status: observed
-    mode: bootstrap
+    mode: operating
     summary: |
-      This repository is currently in bootstrap mode. It should not flip to
-      operating mode until the baseline state, backlog, queue, and evidence are
-      truthfully established.
+      Bootstrap product intake is complete enough for operating mode. Current
+      work should focus on building and validating the Power BI MVP from the
+      prepared demo data and specifications.
 
   project:
-    name: PowerBi_Probeersel
-    type: bootstrap_repository
-    lifecycle_stage: bootstrap
+    name: Fair Workload & Evaluation Cockpit
+    type: power_bi_demo
+    lifecycle_stage: mvp_specified
     truth_summary: >
-      StateDD bootstrap scaffold installed at the repository root with Power
-      Platform skills normalized under skills/power-platform and exposed through
-      adapter paths for Claude, Codex, Kimi, and Gemini. Product purpose, target
-      runtime, users, and milestone remain unknown until user intake.
+      Manager demo for making invisible trainer work visible. The MVP combines
+      fictive time registration, Outlook/Power App workload categories,
+      trainer/course/session context, evaluation scores, open feedback themes
+      and fairness signals. The first milestone is a five-page Power BI report.
+    primary_user: manager or teamlead
+    secondary_user: trainer
+    core_message: Dit maakt onzichtbaar trainerwerk zichtbaar.
+    fairness_positioning: >
+      The cockpit supports better planning, support and training-quality
+      conversations. It is not a surveillance tool or automatic trainer
+      judgement system.
 
   runtime_identity:
     status: unknown
     repo_path: /home/ff/Documents/Projects/PowerBi_Probeersel
     branch: main
-    head: null
+    head: not_embedded_self_referential
     process_or_container: unknown
-    port_or_base_url: unknown
+    port_or_base_url: n/a for current source-only MVP
     rebuilt_in_current_slice: unknown
     duplicate_runtimes_checked: false
     notes: |
-      Fill this section before accepting user-facing behavior or investigating
-      a visual/runtime regression.
+      No Power BI Desktop runtime artifact has been created or visually
+      accepted yet. Before accepting the demo, capture the PBIX/PBIP path,
+      screenshots and report version evidence.
 
   environment:
     status: observed
@@ -102,9 +108,14 @@ current_state:
       - .git
       - .gitignore
       - .kimi
+      - ai
       - adapters
+      - data
       - docs
       - fixtures
+      - outlook
+      - powerapp
+      - powerbi
       - prompts
       - scripts
       - skills
@@ -122,6 +133,15 @@ current_state:
     manifests:
       - README.md
       - GEMINI.md
+      - data/*.csv
+      - docs/demo/*.md
+      - powerbi/model.md
+      - powerbi/pages.md
+      - powerbi/measures.dax
+      - powerbi/theme.json
+      - powerapp/input-spec.md
+      - outlook/category-mapping.md
+      - ai/feedback-summary.md
       - skills/power-platform/*/SKILL.md
       - skills/power-platform/*/agents/openai.yaml
       - .gemini/extensions/power-platform-skills/gemini-extension.json
@@ -136,12 +156,46 @@ current_state:
       - scripts/check_state_docs.py
       - scripts/test_init_template.py
     deployment_assumptions:
-      - no application deployment target has been established
+      - first artifact target is a local Power BI Desktop report
+      - source data is fictive and safe for demo use
       - StateDD workflow assets are available for repo governance
       - Power Platform skills are available under skills/power-platform with symlink adapters
     contradictions:
-      - README.md still describes the generic StateDD template, not the final product
-      - project-specific product/runtime contradictions not yet investigated
+      - README.md still contains the generic StateDD template guide below the project overview
+      - no PBIX/PBIP exists yet, so report UX is specified but not runtime-verified
+
+  demo_assets:
+    status: observed
+    concept: docs/demo/CONCEPT.md
+    demo_script: docs/demo/DEMO_SCRIPT.md
+    privacy_fairness: docs/demo/PRIVACY_FAIRNESS.md
+    build_steps: docs/demo/BUILD_STEPS.md
+    data:
+      - data/trainers.csv
+      - data/courses.csv
+      - data/sessions.csv
+      - data/workload_entries.csv
+      - data/evaluation_responses.csv
+      - data/feedback_comments.csv
+      - data/fairness_signals.csv
+    power_bi:
+      model: powerbi/model.md
+      pages: powerbi/pages.md
+      measures: powerbi/measures.dax
+      theme: powerbi/theme.json
+    input_specs:
+      power_app: powerapp/input-spec.md
+      outlook: outlook/category-mapping.md
+      ai: ai/feedback-summary.md
+
+  mvp_pages:
+    status: specified
+    pages:
+      - Management Overview
+      - Trainer Workload
+      - Vak & Categorie Analyse
+      - Evaluatieanalyse
+      - Fairness Signals
 
   skills:
     status: observed

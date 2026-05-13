@@ -1,0 +1,13 @@
+EvaluationId,SessionId,AverageScore,ResponseCount,Nps,MainIssue
+E001,S001,3.7,11,12,Labo-instructies onduidelijk
+E002,S002,4.4,9,45,Duidelijke opbouw
+E003,S003,4.2,10,38,Tempo goed
+E004,S004,4.1,18,35,Interactie beperkt door webinar
+E005,S005,4.6,13,58,Praktische AI-voorbeelden
+E006,S006,4.5,8,50,Duidelijke Power BI-demo
+E007,S007,3.8,12,15,Exchange complex en veel stappen
+E008,S008,4.0,10,25,Subnetting moeilijk
+E009,S009,3.9,11,18,Meer oefentijd nodig
+E010,S010,4.7,14,62,Veel bruikbare AI-tips
+E011,S011,4.2,16,40,Goede awareness voorbeelden
+E012,S012,3.6,10,8,Labo vraagt betere voorbereiding

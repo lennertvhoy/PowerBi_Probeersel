@@ -1,0 +1,26 @@
+{
+  "name": "Fair Workload Cockpit",
+  "dataColors": ["#2563EB", "#059669", "#F59E0B", "#DC2626", "#7C3AED", "#0891B2", "#64748B"],
+  "background": "#F8FAFC",
+  "foreground": "#0F172A",
+  "tableAccent": "#2563EB",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "title": [
+          {
+            "fontFace": "Segoe UI Semibold",
+            "fontSize": 12,
+            "color": { "solid": { "color": "#0F172A" } }
+          }
+        ],
+        "labels": [
+          {
+            "fontFace": "Segoe UI",
+            "color": { "solid": { "color": "#334155" } }
+          }
+        ]
+      }
+    }
+  }
+}

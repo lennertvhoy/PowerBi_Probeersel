@@ -1,0 +1,16 @@
+FeedbackId,SessionId,Theme,Sentiment,Comment
+F001,S001,Materiaal,Negative,Labo-instructies waren soms te lang en niet altijd duidelijk.
+F002,S001,Moeilijkheid,Negative,Exchange is interessant maar heel complex zonder extra voorbereiding.
+F003,S002,Interactie,Positive,Goede demo met duidelijke stappen in Power BI.
+F004,S003,Tempo,Positive,Tempo was goed en de voorbeelden waren herkenbaar.
+F005,S004,Interactie,Neutral,Webinar was duidelijk maar mocht interactiever.
+F006,S005,Praktijkwaarde,Positive,AI-voorbeelden waren direct toepasbaar in mijn werk.
+F007,S005,Materiaal,Positive,Promptkaarten waren handig.
+F008,S007,Moeilijkheid,Negative,Exchange troubleshooting ging snel en vroeg veel voorkennis.
+F009,S007,Materiaal,Negative,Meer screenshots in de labo's zouden helpen.
+F010,S008,Moeilijkheid,Neutral,Subnetting blijft lastig maar de oefeningen hielpen.
+F011,S009,Nazorg,Neutral,Extra uitleg achteraf was nodig om alles te begrijpen.
+F012,S010,Praktijkwaarde,Positive,Sterke AI-workshop met voorbeelden voor Outlook en PowerPoint.
+F013,S011,Interactie,Positive,Goede cybersecurity voorbeelden uit de praktijk.
+F014,S012,Materiaal,Negative,Exchange labo moet duidelijker en korter.
+F015,S012,Nazorg,Negative,Na de sessie waren er nog veel vragen.

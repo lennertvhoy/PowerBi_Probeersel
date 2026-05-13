@@ -5,13 +5,13 @@ schema_version: "1.0"
 
 product:
   name: "PowerBi_Probeersel"
-  one_sentence: "Bootstrap repository for a Power BI / Power Platform project; exact product intent is still unknown."
+  one_sentence: "Manager demo for a Power BI cockpit that makes invisible trainer workload visible and evaluation discussions fairer."
   description: |
-    This repository currently combines the State Driven Development workflow
-    scaffold with platform-neutral Power Platform skills and adapters for common
-    coding-agent runtimes. The real product purpose, users, runtime, and
-    milestone still need bootstrap intake before the repo can move to operating
-    mode.
+    Fair Workload & Evaluation Cockpit combines time registration, Outlook or
+    Power App workload categories, trainer/session context, evaluation scores,
+    open feedback themes and fairness signals. The demo is framed as support for
+    fair planning and training-quality improvement, not surveillance or
+    automatic trainer scoring.
   is:
     - truth_first
     - evidence_backed
@@ -19,10 +19,21 @@ product:
     - history_separated_from_state
     - active_queue_is_short
     - power_platform_skill_enabled
+    - trainer_workload_demo
+    - fairness_framed
+    - privacy_conscious
   is_not:
-    - product_truth_complete
+    - surveillance_tool
+    - automatic_trainer_judgement
+    - production_hr_system
     - runtime_status_dump
     - append_only_status_file
+
+demo_scope:
+  primary_user: "manager or teamlead responsible for trainer planning and quality"
+  secondary_user: "trainer who wants preparation, aftercare and innovation work recognized"
+  first_milestone: "Power BI MVP with five pages built from fictive demo CSV data"
+  core_message: "Dit maakt onzichtbaar trainerwerk zichtbaar."
 
 truth_rules:
   contract_files:

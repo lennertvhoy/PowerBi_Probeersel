@@ -1,0 +1,85 @@
+-- Fair Workload & Evaluation Cockpit measures
+
+Total Workload Hours =
+SUM ( workload_entries[Hours] )
+
+Contact Hours =
+CALCULATE (
+    [Total Workload Hours],
+    workload_entries[Category] = "Lesgeven"
+)
+
+Preparation Hours =
+CALCULATE (
+    [Total Workload Hours],
+    workload_entries[Category] = "Voorbereiding"
+)
+
+Aftercare Hours =
+CALCULATE (
+    [Total Workload Hours],
+    workload_entries[Category] = "Nazorg"
+)
+
+Administration Hours =
+CALCULATE (
+    [Total Workload Hours],
+    workload_entries[Category] = "Administratie"
+)
+
+Innovation Hours =
+CALCULATE (
+    [Total Workload Hours],
+    workload_entries[Category] = "AI/innovatie"
+)
+
+Prep Contact Ratio =
+DIVIDE ( [Preparation Hours], [Contact Hours] )
+
+Invisible Work Hours =
+[Total Workload Hours] - [Contact Hours]
+
+Visibility Gap % =
+DIVIDE ( [Invisible Work Hours], [Total Workload Hours] )
+
+Average Evaluation Score =
+DIVIDE (
+    SUMX ( evaluation_responses, evaluation_responses[AverageScore] * evaluation_responses[ResponseCount] ),
+    SUM ( evaluation_responses[ResponseCount] )
+)
+
+Total Responses =
+SUM ( evaluation_responses[ResponseCount] )
+
+New Topic Sessions =
+CALCULATE (
+    COUNTROWS ( sessions ),
+    sessions[IsNewTopic] = TRUE ()
+)
+
+Workload Score =
+VAR ComplexityLoad =
+    AVERAGE ( courses[ComplexityScore] )
+VAR PrepRatio =
+    [Prep Contact Ratio]
+VAR Aftercare =
+    [Aftercare Hours]
+RETURN
+    [Total Workload Hours]
+        + ( ComplexityLoad * 2 )
+        + ( PrepRatio * 5 )
+        + ( Aftercare * 0.5 )
+
+Fairness Flag =
+VAR Gap = [Visibility Gap %]
+VAR Score = [Average Evaluation Score]
+VAR PrepRatio = [Prep Contact Ratio]
+RETURN
+    SWITCH (
+        TRUE (),
+        Gap >= 0.55, "Hoge werkdruk, lage zichtbaarheid",
+        PrepRatio >= 0.8 && Score < 4.0, "Complex vak vraagt ondersteuning",
+        [Aftercare Hours] >= 8, "Veel nazorg na sessie",
+        [New Topic Sessions] >= 2, "Veel nieuwe onderwerpen",
+        "Geen opvallend signaal"
+    )

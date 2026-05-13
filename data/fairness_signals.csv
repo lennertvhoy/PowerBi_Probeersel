@@ -1,0 +1,6 @@
+SignalId,SignalDate,SignalType,TrainerId,CourseId,Severity,Signal,RecommendedAction
+FS001,2026-03-31,Hoge werkdruk lage zichtbaarheid,T001,,High,Lennert heeft veel voorbereiding en nazorg buiten contacturen.,Erken nieuwe onderwerpen en plan voorbereiding expliciet mee.
+FS002,2026-03-31,Vak scoort laag bij meerdere trainers,,C002,High,Exchange Server scoort lager bij meerdere trainers en vraagt veel nazorg.,Herwerk labo-instructies en voorzie extra oefentijd.
+FS003,2026-03-31,Innovatie-uren zichtbaar maken,T002,,Medium,Jarno besteedt veel tijd aan Power BI-dashboardontwikkeling die niet als lesuur zichtbaar is.,Tel innovatie- en dashboardwerk mee in workloadplanning.
+FS004,2026-03-31,Nieuwe cursus vraagt voorbereiding,,C004,Medium,AI voor productiviteit scoort hoog maar vraagt veel voorbereiding.,Maak herbruikbaar materiaal en template-oefeningen.
+FS005,2026-03-31,Veel nazorg na sessie,,C003,Medium,Netwerken vraagt veel nazorg rond subnetting.,Voorzie extra voorkennischeck of oefenmateriaal.

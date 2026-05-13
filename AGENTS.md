@@ -1,5 +1,5 @@
 ---
-repo_mode: bootstrap
+repo_mode: operating
 initialized_on: 2026-05-13
 last_updated: 2026-05-13
 ---
@@ -40,7 +40,7 @@ These rules apply in all modes:
 
 ## Current Mode
 
-This repo currently operates in: `bootstrap`
+This repo currently operates in: `operating`
 
 ## Bootstrap Mode
 

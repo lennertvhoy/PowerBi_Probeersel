@@ -1,0 +1,13 @@
+SessionId,Date,TrainerId,CourseId,Audience,SessionType,ContactHours,IsNewTopic,Location
+S001,2026-01-08,T001,C002,Professionals,Praktijklab,6,true,Brussel
+S002,2026-01-10,T002,C005,Volwassenen,Workshop,4,false,Gentbrugge
+S003,2026-01-15,T003,C001,Professionals,Klassikaal,6,false,Antwerpen
+S004,2026-01-20,T004,C006,Schoolkinderen,Webinar,2,false,Online
+S005,2026-02-03,T001,C004,Professionals,Workshop,4,true,Gentbrugge
+S006,2026-02-07,T002,C005,Professionals,Workshop,4,false,Gentbrugge
+S007,2026-02-12,T003,C002,Professionals,Praktijklab,6,false,Brussel
+S008,2026-02-18,T004,C003,Volwassenen,Praktijklab,6,true,Antwerpen
+S009,2026-03-04,T001,C003,Professionals,Praktijklab,6,true,Brussel
+S010,2026-03-09,T002,C004,Professionals,Workshop,4,true,Gentbrugge
+S011,2026-03-14,T003,C006,Volwassenen,Webinar,2,false,Online
+S012,2026-03-21,T004,C002,Professionals,Praktijklab,6,false,Brussel
