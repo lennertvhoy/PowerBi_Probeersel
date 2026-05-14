@@ -27,10 +27,7 @@ jobs:
       - name: Validate root docs
         run: |
           python3 scripts/check_state_docs.py
-          if python3 scripts/check_state_docs.py --bootstrap-gate; then
-            echo "expected root template state to remain bootstrap-initial"
-            exit 1
-          fi
+          python3 scripts/check_state_docs.py --bootstrap-gate
 
       - name: Validate fixtures
         run: |
