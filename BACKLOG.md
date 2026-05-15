@@ -12,10 +12,10 @@ Reference these IDs from `NEXT_ACTIONS.md`.
 ## NOW
 
 - [BL-001] Build the first Power BI Desktop report from the prepared CSV data, model, measures and page specs. Status: partial; browser design preview exists + Windows GUI MCP agent proven, real `.pbix`/`.pbip` build in progress. **Not accepted until visual proof exists.**
-- [BL-006] Convert the Power BI report into a versionable PBIP project if the local Power BI toolchain supports it. Status: partial; fake skeleton deleted by pbi-tools validation. Real seed PBIP pending GUI session.
-- [BL-AUTO-001] Remote CI repair and Actions green gate. Status: complete; workflow passes on `ba19561`.
-- [BL-AUTO-002] PBIP/PBIR seed project creation. Status: active; next step is GUI session to create real seed.
-- [BL-AUTO-003] TMDL semantic model generator. Status: partial; skeleton created at `scripts/generate_tmdl_model.py`, needs validation against real PBIP.
+- [BL-006] Convert the Power BI report into a versionable PBIP project if the local Power BI toolchain supports it. Status: partial; programmatic PBIP skeletons created (TMDL and TMSL) but Power BI Desktop did not open them. Likely cause: PBIP preview feature not enabled. Evidence: `docs/evidence/004-seed-pbip-pbir/`.
+- [BL-AUTO-001] Remote CI repair and Actions green gate. Status: complete; workflow passes on `aa3253a`.
+- [BL-AUTO-002] PBIP/PBIR seed project creation. Status: active; programmatic generators created, Desktop opening blocked by preview feature. Next step: enable preview in Desktop and retry.
+- [BL-AUTO-003] TMDL semantic model generator. Status: partial; skeletons created at `scripts/generate_tmdl_model.py` and `scripts/generate_bim_pbip.py`, needs validation against real Desktop opening.
 - [BL-AUTO-004] Tabular Editor / pbi-tools evaluation with evidence. Status: tools installed and CLI verified; full integration test pending seed PBIP.
 - [BL-AUTO-005] PBIR report JSON generator for five-page cockpit. Status: pending; depends on seed PBIP to understand PBIR structure.
 - [BL-AUTO-006] Windows Power BI Desktop open/render/screenshot smoke. Status: pending; depends on accepted artifact.

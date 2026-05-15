@@ -45,13 +45,20 @@ def check_pbix() -> dict[str, Any]:
 
 def check_pbip() -> dict[str, Any]:
     pbip = POWERBI / "Fair_Workload_Evaluation_Cockpit_PBIP"
-    report_def = pbip / "report.json"
-    model_def = pbip / "definition.pbidataset"
+    pbip_experiment = ROOT / "scripts" / "experiments" / "pbip-tmsl-attempt"
+    report_def = pbip / "Fair_Workload_Evaluation_Cockpit.Report" / "definition.pbir"
+    model_def = pbip / "Fair_Workload_Evaluation_Cockpit.SemanticModel" / "definition.pbism"
+    tmdl_def = pbip / "Fair_Workload_Evaluation_Cockpit.SemanticModel" / "definition" / "database.tmdl"
+    bim_def = pbip / "Fair_Workload_Evaluation_Cockpit.SemanticModel" / "model.bim"
     return {
         "folder_exists": pbip.exists(),
-        "has_report_json": report_def.exists(),
-        "has_model_definition": model_def.exists(),
-        "note": "PBIR preview files may use different names; this checks common ones.",
+        "has_pbip_file": (pbip / "Fair_Workload_Evaluation_Cockpit.pbip").exists(),
+        "has_pbir": report_def.exists(),
+        "has_pbism": model_def.exists(),
+        "has_tmdl": tmdl_def.exists(),
+        "has_bim": bim_def.exists(),
+        "experiment_exists": pbip_experiment.exists(),
+        "note": "PBIP is in preview; Desktop may need preview feature enabled to open.",
     }
 
 
@@ -181,8 +188,12 @@ def main() -> int:
     print(f"PBIX exists : {pbix['exists']} ({pbix['size']} bytes)")
     pbip = status["pbip"]
     print(f"PBIP folder : {pbip['folder_exists']}")
-    print(f"  report.json      : {pbip['has_report_json']}")
-    print(f"  model definition : {pbip['has_model_definition']}")
+    print(f"  .pbip file    : {pbip['has_pbip_file']}")
+    print(f"  .pbir file    : {pbip['has_pbir']}")
+    print(f"  .pbism file   : {pbip['has_pbism']}")
+    print(f"  TMDL          : {pbip['has_tmdl']}")
+    print(f"  TMSL (BIM)    : {pbip['has_bim']}")
+    print(f"  experiment    : {pbip['experiment_exists']}")
 
     print("\n--- Data ---")
     print(f"CSVs valid  : {status['csvs']['all_exist']}")

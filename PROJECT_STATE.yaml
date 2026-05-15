@@ -1,7 +1,7 @@
 # PROJECT_STATE.yaml - Structured current truth
 
 metadata:
-  updated_at: "2026-05-15T15:10:00+02:00"
+  updated_at: "2026-05-15T17:05:00+02:00"
   updated_by: agent
   version: "statedd-template-v3"
 
@@ -31,7 +31,7 @@ current_state:
     canonical_path: C:\Users\codex_pbi\Documents\GitHub\PowerBi_Probeersel
     path_status: observed
     branch: main
-    head: ba19561
+    head: aa3253a
   operating_mode:
     status: observed
     mode: operating
@@ -59,13 +59,14 @@ current_state:
     status: observed
     repo_path: C:\Users\codex_pbi\Documents\GitHub\PowerBi_Probeersel
     branch: main
-    head: ba19561
+    head: aa3253a
     process_or_container: OpenCode CLI + Windows GUI MCP server
     port_or_base_url: n/a (desktop automation)
-    rebuilt_in_current_slice: false
+    rebuilt_in_current_slice: true
     notes: |
-      Windows GUI MCP server (pywinauto + pyautogui) proven working.
-      Power BI Desktop controllable from OpenCode. See docs/evidence/003-windows-gui-agent/.
+      Windows GUI MCP server proven working. Programmatic PBIP generators created
+      (TMDL and TMSL). Power BI Desktop launched but did not load PBIP — likely
+      PBIP preview feature not enabled. See docs/evidence/004-seed-pbip-pbir/.
   environment:
     status: observed
     host:

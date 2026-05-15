@@ -41,7 +41,7 @@ Use this file for dated session notes, verification summaries, and references to
   - Captured screenshots of open state, File menu interaction, and keyboard input.
   - Verified keyboard navigation (Alt+F, Ctrl+G, type, Esc).
   - Verified mouse click on ribbon area.
-  - Confirmed UI tree discovery working.
+  - Verified UI tree discovery working.
 - Control level assessment: full keyboard + mouse + screenshot control; partial UIA semantic control.
 - Added BL-006 for PBIP research.
 - Updated STATUS.md, PROJECT_STATE.yaml, NEXT_ACTIONS.md, BACKLOG.md.
@@ -61,5 +61,25 @@ Use this file for dated session notes, verification summaries, and references to
 - Created `scripts/generate_tmdl_model.py` — draft TMDL generator that parses CSV schema, `powerbi/model.md` relationships, and `powerbi/measures.dax` to produce a TMDL folder structure under `powerbi/tmdl_generated/`.
 - Ran TMDL generator successfully: 7 tables, 8 relationships, 14 measures, 1 calculated column.
 - Updated `docs/dev/POWER_BI_TOOLING_AUDIT.md` with corrected pbi-tools findings and safety warnings.
-- Updated `STATUS.md`, `PROJECT_STATE.yaml`, `NEXT_ACTIONS.md`, `BACKLOG.md` to reflect automation lane and honest blocker state.
+- Updated STATUS.md, PROJECT_STATE.yaml, NEXT_ACTIONS.md, BACKLOG.md to reflect automation lane and honest blocker state.
 - Local validations passed: `validate_demo_data.py`, `check_state_docs.py`, `check_state_docs.py --bootstrap-gate`, `powerbi_pipeline_status.py`.
+
+## 2026-05-15 (session 4 — PBIP seed creation attempt)
+
+- Synced repo: `main` at `aa3253a`, equals `origin/main`.
+- Verified GitHub Actions green on `aa3253a` (run 25919931093, conclusion: success).
+- Installed GitHub CLI (`gh`) via winget for future CI verification.
+- Resolved untracked files: deleted obsolete `scripts/ci_diagnostic.py` and `scripts/ci_trace.py`; added `python3.cmd` and `python3w.cmd` to `.gitignore`.
+- Created `scripts/generate_pbip.py` — programmatic TMDL-based PBIP generator with M-expression CSV partitions, relationships, measures, calculated columns.
+- Created `scripts/generate_bim_pbip.py` — programmatic TMSL-based PBIP generator (`model.bim`) with the same content.
+- Moved the generated PBIP folder to `scripts/experiments/pbip-tmsl-attempt/` after verification failed.
+- Attempted to open programmatic PBIP in Power BI Desktop via multiple methods:
+  - Command-line argument launch
+  - Explorer `start` command
+  - File > Open dialog (Ctrl+O)
+- Result: Power BI Desktop always opened as "Untitled - Power BI Desktop", never loading the PBIP.
+- Root cause hypothesis: PBIP is still in preview and requires the preview feature to be explicitly enabled in Power BI Desktop Options. Microsoft docs confirm this.
+- Evidence folder created: `docs/evidence/004-seed-pbip-pbir/README.md` with full attempt log, screenshots list, and next-step recommendation.
+- Updated `scripts/powerbi_pipeline_status.py` to detect PBIP experiment folder and report preview-feature blocker.
+- Updated `STATUS.md`, `PROJECT_STATE.yaml`, `NEXT_ACTIONS.md`, `BACKLOG.md`, `WORKLOG.md`.
+- Updated `docs/dev/POWER_BI_AUTOMATION_STRATEGY.md` and `docs/dev/POWER_BI_TOOLING_AUDIT.md` with PBIP generation findings.

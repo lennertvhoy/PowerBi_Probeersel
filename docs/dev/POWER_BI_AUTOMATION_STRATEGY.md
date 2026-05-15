@@ -1,7 +1,7 @@
 # Power BI Automation Strategy
 
-**Updated:** 2026-05-14
-**Status:** draft — awaiting seed PBIP/PBIR and tool integration evidence
+**Updated:** 2026-05-15
+**Status:** draft — programmatic PBIP generators created; Desktop opening blocked by preview feature
 
 ## A. Dead Ends / Low-Value Paths (Rejected)
 
@@ -11,7 +11,7 @@
 | WinRM launching WPF Desktop UI | Over-engineered remote-desktop indirection. Windows GUI MCP is already local and proven. |
 | Fake PBIP skeletons missing valid report definitions | Prior `scripts/build_pbip.py` produced a folder with `dataModel.schema` but no valid PBIR report pages, no embedded data, and no opening proof. Committing it as "done" would be fake completeness. |
 | Pretending browser preview equals PBIX | The `demo-preview/` HTML/CSS preview is a stable design reference (BL-002 accepted). It is **not** a Power BI artifact and does not satisfy BL-001. |
-| Committing incomplete PBIP as accepted | The folder `powerbi/Fair_Workload_Evaluation_Cockpit_PBIP/` is a skeleton without report definition. It must not be marked complete until Power BI Desktop opens it and renders pages. |
+| Committing incomplete PBIP as accepted | Programmatic PBIP skeletons were generated (TMDL and TMSL) with full model definitions, but Power BI Desktop did not open them. They were moved to `scripts/experiments/` and must not be marked complete until Desktop loads them successfully. |
 
 ## B. Useful Building Blocks Already Proven
 
@@ -39,7 +39,7 @@ Preferred pipeline architecture:
 
 | Tool | Role | Status |
 |------|------|--------|
-| Power BI Desktop PBIP/PBIR developer mode | Source-control-friendly project format. PBIR stores report structure as JSON files with public schemas. | **Pending verification** — preview features must be enabled in Desktop; seed creation requires one manual GUI session. |
+| Power BI Desktop PBIP/PBIR developer mode | Source-control-friendly project format. PBIR stores report structure as JSON files with public schemas. | **Partial** — programmatic generators created (TMDL + TMSL). Desktop did not load PBIP; likely requires preview feature enablement. See `docs/evidence/004-seed-pbip-pbir/`. |
 | TMDL semantic model files | Human-readable tabular model definition. Supported by pbi-tools `convert` with `modelSerialization=Tmdl`. | **Pending** — need seed PBIP to extract and verify. |
 | Tabular Editor 2.x free CLI | Connects to local Power BI Desktop model (`-L`), executes C# scripts for measures/calculated columns, exports BIM/TMDL. | **Installed and CLI-verified** (`2.28.0`). Full integration test pending seed PBIX. |
 | pbi-tools CLI (Core) | Compiles PbixProj folders to PBIX/PBIT. Converts models to TMDL. Generates BIM. | **Installed and CLI-verified** (`1.2.0`). Requires .NET 8 runtime (installed). **Critical limitation:** `extract` action is absent in Core edition. `convert -overwrite` deletes invalid source folders. Full integration test pending seed PBIP. |
@@ -53,13 +53,14 @@ Preferred pipeline architecture:
 - **Status:** ✅ Complete. Workflow fixed in `ba19561`. Root cause: workflow expected bootstrap gate to fail because repo was assumed to be in bootstrap mode, but repo was already in operating mode.
 
 ### BL-AUTO-002: PBIP/PBIR seed project creation
-- **Status:** Prior fake skeleton deleted by pbi-tools convert experiment.
-- **Next action:** Open Power BI Desktop, enable PBIP/PBIR preview features if available, import `data/*.csv`, create relationships from `powerbi/model.md`, add measures from `powerbi/measures.dax`, build one sample page, save as PBIP.
-- **Exit criteria:** Power BI Desktop opens the saved PBIP folder and renders the sample page. Folder is committed. Fake/incomplete skeletons must not be committed as accepted.
+- **Status:** Active. Programmatic generators created (`scripts/generate_pbip.py` for TMDL, `scripts/generate_bim_pbip.py` for TMSL). Generated folder moved to `scripts/experiments/pbip-tmsl-attempt/`.
+- **Next action:** Enable PBIP preview feature in Power BI Desktop (File → Options → Preview features → "Power BI Project (.pbip) save option"). Then test whether the programmatic PBIP opens. If not, create a blank PBIP in Desktop and diff structures to find the gap.
+- **Exit criteria:** Power BI Desktop opens the PBIP folder and loads the data model. Evidence screenshots captured. |
 
 ### BL-AUTO-003: TMDL semantic model generator
-- **Next action:** Create `scripts/generate_tmdl_model.py` that parses CSV schema and `powerbi/measures.dax` to produce TMDL-compatible model sources.
-- **Exit criteria:** Generated TMDL can be compiled/validated by pbi-tools or Tabular Editor without error.
+- **Status:** Partial. `scripts/generate_tmdl_model.py` produces draft TMDL. `scripts/generate_pbip.py` produces a full PBIP with TMDL and M partitions. `scripts/generate_bim_pbip.py` produces a full PBIP with TMSL (`model.bim`).
+- **Next action:** Validate the generated PBIP against Power BI Desktop once PBIP preview is enabled. Iterate generators based on any loading errors.
+- **Exit criteria:** Generated PBIP opens in Power BI Desktop without fatal errors. |
 
 ### BL-AUTO-004: Tabular Editor / pbi-tools evaluation with evidence
 - **Status:** Partial — Tabular Editor CLI verified (`-?` works). pbi-tools Core verified but `extract` absent; `convert` safety issue discovered.

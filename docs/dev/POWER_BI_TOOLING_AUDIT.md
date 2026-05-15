@@ -1,6 +1,6 @@
 # Power BI Tooling Audit
 
-**Updated:** 2026-05-14
+**Updated:** 2026-05-15
 **Auditor:** coding agent (Windows 11 VM)
 
 ## Summary
@@ -20,8 +20,8 @@
 - **License:** Free (Microsoft)
 - **Install path:** `C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`
 - **Version:** 2.153.1206.0 (April 2026)
-- **PBIP support:** Available via preview features (to be verified)
-- **PBIR support:** Available via enhanced report format preview (to be verified)
+- **PBIP support:** Requires preview feature "Power BI Project (.pbip) save option" to be enabled. Programmatic PBIP (TMDL and TMSL) generated but Desktop opened as "Untitled", suggesting preview feature is not active.
+- **PBIR support:** Enhanced report format is in preview; report.json (PBIR-Legacy) used for seed.
 - **What it can automate:** Nothing headless. Must be launched via GUI or subprocess. Can open `.pbip` folders and `.pbix` files.
 - **What it cannot automate:** No CLI for build/import/measure creation. All report construction requires UI interaction or external tools writing to the model.
 - **Command tested:** `powershell -Command "(Get-ItemProperty '...').VersionInfo.FileVersion"`
@@ -91,7 +91,7 @@
 - **Power BI Desktop version:** 2.153.1206.0
 - **Expected availability:** PBIP has been GA since 2023; PBIR (enhanced report format) is in preview as of 2024–2025.
 - **Verification method:** Open Power BI Desktop → File → Options → Preview features → look for "Store reports using enhanced report format (PBIR)" and "Power BI Project (PBIP) save option".
-- **Status:** **Not yet verified** — requires GUI session.
+- **Status:** **Attempted but not confirmed open** — programmatic PBIP generated (TMDL + TMSL). Power BI Desktop launched but stayed on "Untitled". Evidence: `docs/evidence/004-seed-pbip-pbir/`. Most likely cause: PBIP preview feature not enabled.
 
 ---
 
@@ -112,7 +112,9 @@ winget install Microsoft.DotNet.Runtime.8 --silent --accept-source-agreements --
 
 ## Next Steps
 
-1. Verify PBIP/PBIR preview features are enabled in Power BI Desktop.
-2. Create a seed PBIP from Power BI Desktop and test `pbi-tools convert` to TMDL.
-3. Connect Tabular Editor to the seed PBIP's local model and script a measure addition.
-4. Document exact commands that work in `scripts/` for reproducibility.
+1. Enable PBIP preview feature in Power BI Desktop via GUI (File → Options → Preview features).
+2. Retry opening the programmatic PBIP at `scripts/experiments/pbip-tmsl-attempt/`.
+3. If programmatic PBIP still fails, create a blank PBIP in Desktop, save, and diff the generated files against the programmatic versions.
+4. Once a valid seed PBIP opens, use Tabular Editor to connect to the local model and validate model modifications.
+5. Test `pbi-tools convert` on the valid PBIP to produce TMDL.
+6. Document exact commands that work in `scripts/` for reproducibility.
