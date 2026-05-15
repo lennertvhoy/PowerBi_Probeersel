@@ -1,7 +1,7 @@
 # PROJECT_STATE.yaml - Structured current truth
 
 metadata:
-  updated_at: "2026-05-13T14:30:00+02:00"
+  updated_at: "2026-05-15T15:10:00+02:00"
   updated_by: agent
   version: "statedd-template-v3"
 
@@ -31,7 +31,7 @@ current_state:
     canonical_path: C:\Users\codex_pbi\Documents\GitHub\PowerBi_Probeersel
     path_status: observed
     branch: main
-    head: 0e549a5
+    head: ba19561
   operating_mode:
     status: observed
     mode: operating
@@ -59,7 +59,7 @@ current_state:
     status: observed
     repo_path: C:\Users\codex_pbi\Documents\GitHub\PowerBi_Probeersel
     branch: main
-    head: 0e549a5
+    head: ba19561
     process_or_container: OpenCode CLI + Windows GUI MCP server
     port_or_base_url: n/a (desktop automation)
     rebuilt_in_current_slice: false
@@ -159,10 +159,13 @@ current_state:
       - source data is fictive and safe for demo use
       - StateDD workflow assets are available for repo governance
       - Power Platform skills are available under skills/power-platform with symlink adapters
-      - Windows GUI MCP agent is now available for Power BI Desktop automation
+      - Windows GUI MCP agent is available for Power BI Desktop automation
+      - Tabular Editor 2.28.0 installed for semantic model automation
+      - pbi-tools 1.2.0 Core installed for compile/convert (extract absent in Core)
+      - TMDL generator skeleton created at scripts/generate_tmdl_model.py
     contradictions:
       - README.md still contains the generic StateDD template guide below the project overview
-      - no PBIX/PBIP exists yet; report UX is browser-preview verified but not Power BI runtime verified
+      - no real PBIX/PBIP exists yet; prior fake skeleton deleted. Report UX is browser-preview verified but not Power BI runtime verified
   demo_assets:
     status: observed
     concept: docs/demo/CONCEPT.md

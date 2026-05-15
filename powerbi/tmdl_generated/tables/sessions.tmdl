@@ -1,0 +1,47 @@
+table sessions
+
+    column SessionId
+        dataType: string
+        sourceColumn: SessionId
+
+    column Date
+        dataType: dateTime
+        sourceColumn: Date
+
+    column TrainerId
+        dataType: string
+        sourceColumn: TrainerId
+
+    column CourseId
+        dataType: string
+        sourceColumn: CourseId
+
+    column Audience
+        dataType: string
+        sourceColumn: Audience
+
+    column SessionType
+        dataType: string
+        sourceColumn: SessionType
+
+    column ContactHours
+        dataType: int64
+        sourceColumn: ContactHours
+
+    column IsNewTopic
+        dataType: boolean
+        sourceColumn: IsNewTopic
+
+    column Location
+        dataType: string
+        sourceColumn: Location
+
+    column 'Full Name'
+        dataType: string
+        kind: calculatedColumn
+        expression: RELATED(trainers[Trainer])
+
+    partition sessions
+        mode: import
+        source = CSV
+

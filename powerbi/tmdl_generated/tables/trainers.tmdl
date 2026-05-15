@@ -1,0 +1,22 @@
+table trainers
+
+    column TrainerId
+        dataType: string
+        sourceColumn: TrainerId
+
+    column Trainer
+        dataType: string
+        sourceColumn: Trainer
+
+    column Role
+        dataType: string
+        sourceColumn: Role
+
+    column Team
+        dataType: string
+        sourceColumn: Team
+
+    partition trainers
+        mode: import
+        source = CSV
+

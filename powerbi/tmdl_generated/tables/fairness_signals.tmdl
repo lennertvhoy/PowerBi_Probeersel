@@ -1,0 +1,38 @@
+table fairness_signals
+
+    column SignalId
+        dataType: string
+        sourceColumn: SignalId
+
+    column SignalDate
+        dataType: dateTime
+        sourceColumn: SignalDate
+
+    column SignalType
+        dataType: string
+        sourceColumn: SignalType
+
+    column TrainerId
+        dataType: string
+        sourceColumn: TrainerId
+
+    column CourseId
+        dataType: string
+        sourceColumn: CourseId
+
+    column Severity
+        dataType: string
+        sourceColumn: Severity
+
+    column Signal
+        dataType: string
+        sourceColumn: Signal
+
+    column RecommendedAction
+        dataType: string
+        sourceColumn: RecommendedAction
+
+    partition fairness_signals
+        mode: import
+        source = CSV
+

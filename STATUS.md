@@ -1,8 +1,8 @@
 # PowerBi_Probeersel Status
 
-**Updated At:** 2026-05-13 14:30 CEST
+**Updated At:** 2026-05-15 15:10 CEST
 **Execution Mode:** operating
-**Project State:** gui_agent_enabled
+**Project State:** automation_pipeline_defined
 
 ## Snapshot
 
@@ -16,14 +16,18 @@
 
 ## Immediate Priorities
 
-1. Build the real Power BI report from `data/` and `powerbi/` using the Windows GUI MCP agent.
-2. Use `demo-preview/` and `docs/demo/MANAGER_WALKTHROUGH.md` for the manager story rehearsal.
-3. Keep privacy/fairness framing explicit before using any real trainer data.
+1. Repair GitHub Actions green gate and keep it passing.
+2. Define PBIP/PBIR/TMDL-first automation pipeline; reject GUI-only build as primary path.
+3. Create seed PBIP/PBIR project in Power BI Desktop with preview features.
+4. Use `demo-preview/` and `docs/demo/MANAGER_WALKTHROUGH.md` for the manager story rehearsal.
+5. Keep privacy/fairness framing explicit before using any real trainer data.
 
 ## Active Blockers
 
-- No `.pbix` or `.pbip` report has been built yet.
+- No real `.pbix` or `.pbip` report has been built yet. Prior fake skeleton was deleted by pbi-tools validation.
+- PBIP/PBIR preview features not yet verified in Power BI Desktop.
 - No real Outlook, Power App or evaluation-system integration is connected yet.
+- Tabular Editor and pbi-tools installed but not yet integrated against a live model.
 
 ## Infrastructure Milestones
 

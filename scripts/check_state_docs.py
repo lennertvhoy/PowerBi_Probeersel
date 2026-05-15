@@ -10,8 +10,8 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-BACKLOG_ID_RE = re.compile(r"\[(BL-\d{3})\]")
-NEXT_ACTION_ID_RE = re.compile(r"^###\s+P\d+\s+\[(BL-\d{3})\]\s+.+$", re.MULTILINE)
+BACKLOG_ID_RE = re.compile(r"\[(BL-[A-Za-z0-9_-]+)\]")
+NEXT_ACTION_ID_RE = re.compile(r"^###\s+P\d+\s+\[(BL-[A-Za-z0-9_-]+)\]\s+.+$", re.MULTILINE)
 WORKLOG_ENTRY_RE = re.compile(r"^##\s+\d{4}-\d{2}-\d{2}\s+-\s+.+$", re.MULTILINE)
 EVIDENCE_ENTRY_RE = re.compile(r"^##\s+EV-\d{4}-\d{2}-\d{2}-\d{3}:\s+.+$", re.MULTILINE)
 PINNED_ACTION_RE = re.compile(r"uses:\s+actions/[^@\s]+@([0-9a-f]{40})")
@@ -327,12 +327,12 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
 
 
 def print_failure_block(label: str, issues: list[str]) -> None:
-    print(f"\n📄 {label}")
+    print(f"\nFILE {label}")
     if issues:
         for issue in issues:
-            print(f"  ❌ {issue}")
+            print(f"  FAIL {issue}")
     else:
-        print("  ✅ All checks passed")
+        print("  OK  All checks passed")
 
 
 def main(argv: list[str] | None = None) -> int:

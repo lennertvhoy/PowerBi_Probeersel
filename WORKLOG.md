@@ -46,3 +46,20 @@ Use this file for dated session notes, verification summaries, and references to
 - Added BL-006 for PBIP research.
 - Updated STATUS.md, PROJECT_STATE.yaml, NEXT_ACTIONS.md, BACKLOG.md.
 - Created `docs/evidence/003-windows-gui-agent/` with README.md + 4 evidence screenshots.
+
+## 2026-05-14 – 2026-05-15 (session 3 — CI repair and Power BI automation pipeline)
+
+- Verified repo sync: `main` at `ba19561`, clean with origin.
+- Confirmed GitHub Actions "Validate Template Docs" is green on `ba19561` (run 25855938462, conclusion: success).
+- Updated `docs/dev/POWER_BI_AUTOMATION_STRATEGY.md` with PBIP/PBIR/TMDL-first architecture, dead-end rejection, and automation roadmap (BL-AUTO-001 through BL-AUTO-006).
+- Installed and verified Tabular Editor 2.28.0 portable (`C:\Users\codex_pbi\tools\tabular-editor-2\TabularEditor.exe`). CLI help confirmed.
+- Installed and verified pbi-tools 1.2.0 Core (`C:\Users\codex_pbi\tools\pbi-tools\pbi-tools.core.exe`).
+- Discovered critical pbi-tools Core limitation: `extract` action is absent. Only `compile`, `convert`, `deploy`, `export-data`, `generate-bim`, `git`, `info`, `init` are available.
+- Discovered pbi-tools safety issue: `convert -overwrite` on an invalid PbixProj folder deletes the source folder. The fake skeleton at `powerbi/Fair_Workload_Evaluation_Cockpit_PBIP/` was destroyed during testing.
+- Moved dead-end scripts (`build_pbix_direct.py`, `build_pbix_mcp.py`, `build_pbip.py`) to `scripts/experiments/` with warning comments.
+- Created `scripts/powerbi_pipeline_status.py` to report pipeline health: PBIX/PBIP existence, CSV validation, measures/theme checks, tooling installation, next missing step.
+- Created `scripts/generate_tmdl_model.py` — draft TMDL generator that parses CSV schema, `powerbi/model.md` relationships, and `powerbi/measures.dax` to produce a TMDL folder structure under `powerbi/tmdl_generated/`.
+- Ran TMDL generator successfully: 7 tables, 8 relationships, 14 measures, 1 calculated column.
+- Updated `docs/dev/POWER_BI_TOOLING_AUDIT.md` with corrected pbi-tools findings and safety warnings.
+- Updated `STATUS.md`, `PROJECT_STATE.yaml`, `NEXT_ACTIONS.md`, `BACKLOG.md` to reflect automation lane and honest blocker state.
+- Local validations passed: `validate_demo_data.py`, `check_state_docs.py`, `check_state_docs.py --bootstrap-gate`, `powerbi_pipeline_status.py`.
