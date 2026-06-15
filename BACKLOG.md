@@ -25,6 +25,7 @@ Reference these IDs from `NEXT_ACTIONS.md`.
 
 ## LATER
 
+- [BL-WB-001] Use Kimi WebBridge to browser-verify any user-facing change in the real browser when available.
 - [BL-006] Convert the Power BI report into a versionable PBIP project if the local Power BI toolchain supports it.
 - [BL-007] Replace fictive data with anonymized real sample data after privacy approval.
 

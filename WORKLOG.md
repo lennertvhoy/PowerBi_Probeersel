@@ -27,3 +27,13 @@ Use this file for dated session notes, verification summaries, and references to
 - Added `scripts/validate_demo_data.py` and verified the fictive CSV schemas, relationships and numeric fields.
 - Captured five preview screenshots and validation outputs under `docs/evidence/001-powerbi-mvp-preview/`.
 - Marked BL-002 complete and BL-001 partial/open because no real `.pbix` or `.pbip` exists yet.
+
+## 2026-06-04
+
+- Agent takeover analysis: read all state files, discovered HEAD mismatch (state claimed 0319bff, actual was 0e549a5).
+- Reviewed recovery notes under `docs/evidence/002-real-powerbi-artifact/`: prior Windows VM attempt was interrupted, VM no longer exists, no `.pbix` created.
+- Verified browser preview still serves correctly on `http://127.0.0.1:4173/demo-preview/`.
+- Compared `demo-preview/app.js` against `powerbi/pages.md` and identified two missing visuals: workload-by-month line chart (Page 2) and evaluation trend-over-time (Page 4).
+- Updated `STATUS.md`, `PROJECT_STATE.yaml`, and `NEXT_ACTIONS.md` to reflect current truth and the two preview gaps.
+- Added `workload per maand` line chart to Page 2 and `evaluatietrend in de tijd` line chart to Page 4 in `demo-preview/`.
+- Captured fresh evidence screenshots for all five pages under `docs/evidence/003-preview-gaps-closed/`.

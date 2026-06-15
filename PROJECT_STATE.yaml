@@ -1,7 +1,7 @@
 # PROJECT_STATE.yaml - Structured current truth
 
 metadata:
-  updated_at: 2026-05-13T13:00:00+02:00
+  updated_at: 2026-06-04T11:20:00+02:00
   updated_by: agent
   version: "statedd-template-v3"
 
@@ -63,17 +63,17 @@ current_state:
     status: observed
     repo_path: /home/ff/Documents/Projects/PowerBi_Probeersel
     branch: main
-    head: 0319bff_at_preview_capture_before_commit
+    head: 0e549a5_docs_evidence_002_recovery
     process_or_container: python3 -m http.server
     port_or_base_url: http://127.0.0.1:4173/demo-preview/
     rebuilt_in_current_slice: true
     duplicate_runtimes_checked: not_applicable_single_local_server_started_for_preview
     notes: |
       Browser preview was served locally and captured with Playwright under
-      docs/evidence/001-powerbi-mvp-preview/. No Power BI Desktop runtime
-      artifact has been created or visually accepted yet. Before accepting the
-      real Power BI demo, capture the PBIX/PBIP path, screenshots and report
-      version evidence.
+      docs/evidence/001-powerbi-mvp-preview/. A subsequent Windows VM attempt
+      to install Power BI Desktop was interrupted; recovery notes and 27
+      screenshots are under docs/evidence/002-real-powerbi-artifact/. The VM
+      no longer exists. No .pbix or .pbip artifact has been created yet.
 
   environment:
     status: observed
@@ -166,6 +166,7 @@ current_state:
     contradictions:
       - README.md still contains the generic StateDD template guide below the project overview
       - no PBIX/PBIP exists yet; report UX is browser-preview verified but not Power BI runtime verified
+      - PROJECT_STATE.yaml head was stale (0319bff) relative to actual git head (0e549a5) until this update
 
   demo_assets:
     status: observed
@@ -201,6 +202,8 @@ current_state:
       - Vak & Categorie Analyse
       - Evaluatieanalyse
       - Fairness Signals
+    gaps_vs_spec: []
+    evidence: docs/evidence/003-preview-gaps-closed/
 
   skills:
     status: observed

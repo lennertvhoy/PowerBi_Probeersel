@@ -1,6 +1,6 @@
 # NEXT_ACTIONS - Active Execution Queue
 
-**Updated At:** 2026-05-13 13:00 CEST
+**Updated At:** 2026-06-04 11:20 CEST
 **Execution Mode:** operating
 **Max Items:** 10
 
@@ -9,7 +9,7 @@
 ### P1 [BL-001] Build Power BI MVP
 
 Owner: human + coding agent.
-Next action: when Power BI Desktop/PBIP tooling is available, import `data/*.csv`, create relationships from `powerbi/model.md`, add measures from `powerbi/measures.dax`, and build pages from `powerbi/pages.md`. Use `demo-preview/` as the verified design reference.
+Next action: when Power BI Desktop/PBIP tooling becomes available on Windows, import `data/*.csv`, create relationships from `powerbi/model.md`, add measures from `powerbi/measures.dax`, and build pages from `powerbi/pages.md`. Use `demo-preview/` as the verified design reference.
 Exit criteria: a local `.pbix` or `.pbip` report exists with all five demo pages.
 
 ## Queue Rules

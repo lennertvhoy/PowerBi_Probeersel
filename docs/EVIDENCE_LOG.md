@@ -97,3 +97,24 @@
   as_of: 2026-05-13T13:00:00+02:00
   Notes: "Power BI Desktop/PBIP tooling was not found; no .pbix or .pbip artifact exists in this slice."
 ```
+
+## EV-2026-06-04-001: Browser preview gaps closed
+
+```yaml
+- ID: EV-2026-06-04-001
+  File: /home/ff/Documents/Projects/PowerBi_Probeersel/docs/evidence/003-preview-gaps-closed/
+  Title: Browser preview now covers all five page specs
+  Source/System: browser
+  Route/Page: http://127.0.0.1:4173/demo-preview/
+  Action: added SVG line chart for workload-by-month on Page 2 and evaluation-trend-over-time on Page 4, captured five Playwright screenshots
+  Shows:
+    - Page 2 now includes 'Workload per maand' line chart
+    - Page 4 now includes 'Evaluatietrend in de tijd' line chart
+    - all other visuals remain unchanged and correct
+  Proves:
+    - browser preview no longer has gaps versus powerbi/pages.md
+    - BL-001 design reference is complete before Power BI Desktop build
+  Type: docs-render-verification
+  as_of: 2026-06-04T11:30:00+02:00
+  Notes: "Charts are SVG-based, vanilla JS, no external charting library."
+```

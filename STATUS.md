@@ -1,6 +1,6 @@
 # PowerBi_Probeersel Status
 
-**Updated At:** 2026-05-13 13:00 CEST
+**Updated At:** 2026-06-04 11:20 CEST
 **Execution Mode:** operating
 **Project State:** browser_preview_built
 **Public URL:** not configured
@@ -22,8 +22,9 @@
 
 ## Active Blockers
 
-- No `.pbix` or `.pbip` report has been built yet; Power BI Desktop/PBIP tooling was not found in the current Linux environment.
+- No `.pbix` or `.pbip` report has been built yet; Power BI Desktop requires Windows and an interactive desktop. A prior Windows VM attempt was interrupted and the VM no longer exists.
 - No real Outlook, Power App or evaluation-system integration is connected yet.
+- Browser preview now covers all five page specs; no remaining visual gaps.
 
 ## Notes
 

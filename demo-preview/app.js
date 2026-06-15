@@ -192,6 +192,14 @@ function renderTrainer(data, refs, trainerMap) {
     return [trainerMap[id].Trainer, newTopics, `${fmt.format(total)} u`, `${fmt.format(invisible / total * 100)}%`];
   });
   refs.trainerTable.innerHTML = table(["Trainer", "Nieuwe topics", "Totale workload", "Visibility gap"], rows);
+
+  const monthGroups = groupBy(data.workload, (row) => row.Date.slice(0, 7));
+  const monthKeys = Object.keys(monthGroups).sort();
+  const monthPoints = monthKeys.map((key) => ({
+    label: key,
+    value: sum(monthGroups[key]),
+  }));
+  renderLineChart(refs.workloadTrend, monthPoints, { suffix: " u" });
 }
 
 function renderCourse(data, refs, courseMap) {
@@ -262,6 +270,15 @@ function renderEvaluation(data, refs, courseMap, trainerMap) {
     ["Thema", "Sentiment", "Commentaar"],
     data.feedback.slice(0, 8).map((row) => [row.Theme, row.Sentiment, row.Comment]),
   );
+
+  const sessionsById = byId(data.sessions, "SessionId");
+  const evalMonthGroups = groupBy(data.evaluations, (row) => sessionsById[row.SessionId].Date.slice(0, 7));
+  const evalMonthKeys = Object.keys(evalMonthGroups).sort();
+  const evalPoints = evalMonthKeys.map((key) => ({
+    label: key,
+    value: weightedAverage(evalMonthGroups[key]),
+  }));
+  renderLineChart(refs.evaluationTrend, evalPoints, { suffix: "/5" });
 }
 
 function renderFairness(data, refs, courseMap, trainerMap) {
@@ -279,6 +296,52 @@ function renderFairness(data, refs, courseMap, trainerMap) {
 function table(headers, rows) {
   return `<table><thead><tr>${headers.map((header) => `<th>${header}</th>`).join("")}</tr></thead>
     <tbody>${rows.map((row) => `<tr>${row.map((cell) => `<td>${cell}</td>`).join("")}</tr>`).join("")}</tbody></table>`;
+}
+
+function renderLineChart(target, points, options = {}) {
+  if (!points.length) {
+    target.innerHTML = "<p class='muted'>Geen data</p>";
+    return;
+  }
+  const width = 800;
+  const height = 260;
+  const padding = { top: 10, right: 20, bottom: 30, left: 40 };
+  const chartWidth = width - padding.left - padding.right;
+  const chartHeight = height - padding.top - padding.bottom;
+  const maxValue = Math.max(...points.map((p) => p.value), 1);
+  const minValue = Math.min(...points.map((p) => p.value), 0);
+  const range = maxValue - minValue || 1;
+
+  const getX = (index) => padding.left + (index / (points.length - 1 || 1)) * chartWidth;
+  const getY = (value) => padding.top + chartHeight - ((value - minValue) / range) * chartHeight;
+
+  const pathD = points.map((p, i) => `${i === 0 ? "M" : "L"} ${getX(i)} ${getY(p.value)}`).join(" ");
+  const areaD = `${pathD} L ${getX(points.length - 1)} ${padding.top + chartHeight} L ${getX(0)} ${padding.top + chartHeight} Z`;
+
+  const xAxisY = padding.top + chartHeight;
+  const yAxisX = padding.left;
+
+  const xLabels = points.map((p, i) => {
+    const x = getX(i);
+    return `<text x="${x}" y="${xAxisY + 18}" text-anchor="middle" class="axis-text">${p.label}</text>`;
+  }).join("");
+
+  const yTicks = [0, 0.25, 0.5, 0.75, 1].map((t) => {
+    const value = minValue + range * t;
+    const y = getY(value);
+    return `<text x="${yAxisX - 8}" y="${y + 4}" text-anchor="end" class="axis-text">${fmt.format(value)}${options.suffix || ""}</text>
+      <line x1="${yAxisX}" y1="${y}" x2="${width - padding.right}" y2="${y}" class="axis" />`;
+  }).join("");
+
+  const dots = points.map((p, i) => `<circle cx="${getX(i)}" cy="${getY(p.value)}" class="data-point" />`).join("");
+
+  target.innerHTML = `<svg viewBox="0 0 ${width} ${height}" preserveAspectRatio="none">
+    ${yTicks}
+    <path d="${areaD}" class="area-path" />
+    <path d="${pathD}" class="line-path" />
+    ${dots}
+    ${xLabels}
+  </svg>`;
 }
 
 function setupTabs() {
@@ -305,6 +368,7 @@ loadData().then((data) => {
     themeBars: document.getElementById("theme-bars"),
     overviewSignals: document.getElementById("overview-signals"),
     trainerWorkload: document.getElementById("trainer-workload"),
+    workloadTrend: document.getElementById("workload-trend"),
     trainerTable: document.getElementById("trainer-table"),
     prepBars: document.getElementById("prep-bars"),
     scatter: document.getElementById("scatter"),
@@ -314,6 +378,7 @@ loadData().then((data) => {
     scoreTrainer: document.getElementById("score-trainer"),
     audienceTable: document.getElementById("audience-table"),
     feedbackTable: document.getElementById("feedback-table"),
+    evaluationTrend: document.getElementById("evaluation-trend"),
     fairnessCards: document.getElementById("fairness-cards"),
     actionsTable: document.getElementById("actions-table"),
   };

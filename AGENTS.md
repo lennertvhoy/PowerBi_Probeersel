@@ -1,9 +1,9 @@
 ---
-repo_mode: operating
+repo_mode: "operating"
 initialized_on: 2026-05-13
-last_updated: 2026-05-13
+last_updated: "2026-06-14"
+project: "PowerBi_Probeersel"
 ---
-
 # State Driven Development Template Contract
 
 **Purpose:** Stable operating contract for technical projects that use explicit state, evidence, and short active queues.
