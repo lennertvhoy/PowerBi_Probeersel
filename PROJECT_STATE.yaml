@@ -28,19 +28,16 @@ verification_labels:
 
 current_state:
   repository:
-    canonical_path: /home/ff/Documents/Projects/PowerBi_Probeersel
+    canonical_path: C:\Users\codex_pbi\Documents\GitHub\PowerBi_Probeersel
     path_status: observed
     branch: main
-    head: not_embedded_self_referential
-
+    head: aa3253a
   operating_mode:
     status: observed
     mode: operating
     summary: |
-      Bootstrap product intake is complete enough for operating mode. Current
-      work should focus on building and validating the Power BI MVP from the
-      prepared demo data and specifications.
-
+      Bootstrap product intake is complete. Windows GUI MCP agent is now operational,
+      enabling programmatic control of Power BI Desktop from OpenCode.
   project:
     name: Fair Workload & Evaluation Cockpit
     type: power_bi_demo
@@ -50,7 +47,7 @@ current_state:
       fictive time registration, Outlook/Power App workload categories,
       trainer/course/session context, evaluation scores, open feedback themes
       and fairness signals. A browser-verifiable five-page design preview exists;
-      the real Power BI PBIX/PBIP report remains open.
+      the real Power BI report build is now possible via Windows GUI MCP agent.
     primary_user: manager or teamlead
     secondary_user: trainer
     core_message: Dit maakt onzichtbaar trainerwerk zichtbaar.
@@ -58,16 +55,14 @@ current_state:
       The cockpit supports better planning, support and training-quality
       conversations. It is not a surveillance tool or automatic trainer
       judgement system.
-
   runtime_identity:
     status: observed
-    repo_path: /home/ff/Documents/Projects/PowerBi_Probeersel
+    repo_path: C:\Users\codex_pbi\Documents\GitHub\PowerBi_Probeersel
     branch: main
     head: 0e549a5_docs_evidence_002_recovery
     process_or_container: python3 -m http.server
     port_or_base_url: http://127.0.0.1:4173/demo-preview/
     rebuilt_in_current_slice: true
-    duplicate_runtimes_checked: not_applicable_single_local_server_started_for_preview
     notes: |
       Browser preview was served locally and captured with Playwright under
       docs/evidence/001-powerbi-mvp-preview/. A subsequent Windows VM attempt
@@ -78,29 +73,33 @@ current_state:
   environment:
     status: observed
     host:
-      os: Linux 6.19.13-200.fc43.x86_64
-      kernel: #1 SMP PREEMPT_DYNAMIC Sat Apr 18 20:20:44 UTC 2026
-      shell: /bin/bash
-      terminal: xterm-256color
+      os: Windows 11
+      kernel: n/a (Windows)
+      shell: PowerShell 5.1
+      terminal: Windows Terminal
     package_managers:
-      - dnf: observed
-      - npm: observed
+      - winget: observed
+      - pip: observed
     language_runtimes:
-      python: 3.14.4
-      node: v22.22.0
-      npm: 10.9.4
-      dotnet: not found
+      python: 3.12.10
+      node: n/a (OpenCode installed via Bun)
+      npm: n/a
+      dotnet: n/a
+      opencode: 1.14.48
     container_tooling:
-      podman: present
+      podman: absent
       docker: absent
     browser_tooling:
       chrome: present
+      edge: present
+    gui_automation:
+      pywinauto: installed
+      pyautogui: installed
+      mss: installed
+      pillow: installed
+      pynput: installed
     ports:
-      listeners: observed
-      notes: |
-        Active listeners were observed with ss during bootstrap. None were
-        identified as this repository's runtime.
-
+      listeners: n/a (Windows desktop environment)
   repository_structure:
     status: observed
     top_level_entries:
@@ -151,6 +150,7 @@ current_state:
       - scripts/init_template.py
       - scripts/check_state_docs.py
       - scripts/test_init_template.py
+      - scripts/validate_demo_data.py
     entrypoints:
       - scripts/init_template.py
       - scripts/check_state_docs.py
@@ -163,6 +163,10 @@ current_state:
       - source data is fictive and safe for demo use
       - StateDD workflow assets are available for repo governance
       - Power Platform skills are available under skills/power-platform with symlink adapters
+      - Windows GUI MCP agent is available for Power BI Desktop automation
+      - Tabular Editor 2.28.0 installed for semantic model automation
+      - pbi-tools 1.2.0 Core installed for compile/convert (extract absent in Core)
+      - TMDL generator skeleton created at scripts/generate_tmdl_model.py
     contradictions:
       - README.md still contains the generic StateDD template guide below the project overview
       - no PBIX/PBIP exists yet; report UX is browser-preview verified but not Power BI runtime verified
@@ -193,7 +197,6 @@ current_state:
       power_app: powerapp/input-spec.md
       outlook: outlook/category-mapping.md
       ai: ai/feedback-summary.md
-
   mvp_pages:
     status: browser_preview_verified
     pages:
@@ -204,53 +207,5 @@ current_state:
       - Fairness Signals
     gaps_vs_spec: []
     evidence: docs/evidence/003-preview-gaps-closed/
-
-  skills:
-    status: observed
-    canonical_root: skills/power-platform
-    adapters:
-      claude: .claude/skills
-      codex: .codex/skills
-      kimi: .kimi/plugins
-      gemini_root_context: GEMINI.md
-      gemini_extension: .gemini/extensions/power-platform-skills
-    installed:
-      - code-review
-      - dataverse-plugins
-      - dataverse-web-api
-      - dataverse-web-resources
-      - pcf-controls
-      - plan-with-team
-      - power-apps-code-apps
-      - record-screen
-      - visual-qa
-    notes: |
-      Canonical skill content is platform-neutral. Adapter directories expose
-      the same folders to common agent runtimes without maintaining divergent
-      copies.
-
-  evidence:
-    status: active
-    ledger: docs/EVIDENCE_LOG.md
-    acceptance_freezes: docs/ACCEPTANCE_FREEZES.md
-    artifact_root: docs/evidence
-    latest_artifact: docs/evidence/001-powerbi-mvp-preview/
-    standard: browser_verification_or_test_output_for_user_facing_claims
-
-  documentation:
-    status: observed
-    primary_user_guide: README.md
-    live_docs:
-      - README.md
-      - AGENTS.md
-      - STATUS.md
-      - PROJECT_STATE.yaml
-      - PROJECT_DNA.yaml
-      - PROJECT_ADAPTER.yaml
-      - NEXT_ACTIONS.md
-      - BACKLOG.md
-      - WORKLOG.md
-      - docs/EVIDENCE_LOG.md
-      - docs/ACCEPTANCE_FREEZES.md
 
 active_problems: []

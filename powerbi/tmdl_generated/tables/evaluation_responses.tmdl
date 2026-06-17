@@ -1,0 +1,30 @@
+table evaluation_responses
+
+    column EvaluationId
+        dataType: string
+        sourceColumn: EvaluationId
+
+    column SessionId
+        dataType: string
+        sourceColumn: SessionId
+
+    column AverageScore
+        dataType: double
+        sourceColumn: AverageScore
+
+    column ResponseCount
+        dataType: int64
+        sourceColumn: ResponseCount
+
+    column Nps
+        dataType: int64
+        sourceColumn: Nps
+
+    column MainIssue
+        dataType: string
+        sourceColumn: MainIssue
+
+    partition evaluation_responses
+        mode: import
+        source = CSV
+

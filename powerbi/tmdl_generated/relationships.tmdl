@@ -1,0 +1,42 @@
+// Relationships derived from powerbi/model.md
+
+relationship sessions_TrainerId_to_trainers_TrainerId
+    fromColumn: sessions.TrainerId
+    toColumn: trainers.TrainerId
+    cardinality: manyToOne
+
+relationship sessions_CourseId_to_courses_CourseId
+    fromColumn: sessions.CourseId
+    toColumn: courses.CourseId
+    cardinality: manyToOne
+
+relationship workload_entries_TrainerId_to_trainers_TrainerId
+    fromColumn: workload_entries.TrainerId
+    toColumn: trainers.TrainerId
+    cardinality: manyToOne
+
+relationship workload_entries_CourseId_to_courses_CourseId
+    fromColumn: workload_entries.CourseId
+    toColumn: courses.CourseId
+    cardinality: manyToOne
+
+relationship evaluation_responses_SessionId_to_sessions_SessionId
+    fromColumn: evaluation_responses.SessionId
+    toColumn: sessions.SessionId
+    cardinality: manyToOne
+
+relationship feedback_comments_SessionId_to_sessions_SessionId
+    fromColumn: feedback_comments.SessionId
+    toColumn: sessions.SessionId
+    cardinality: manyToOne
+
+relationship fairness_signals_TrainerId_to_trainers_TrainerId
+    fromColumn: fairness_signals.TrainerId
+    toColumn: trainers.TrainerId
+    cardinality: manyToOne
+
+relationship fairness_signals_CourseId_to_courses_CourseId
+    fromColumn: fairness_signals.CourseId
+    toColumn: courses.CourseId
+    cardinality: manyToOne
+

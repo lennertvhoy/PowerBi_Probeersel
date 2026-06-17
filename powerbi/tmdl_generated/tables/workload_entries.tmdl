@@ -1,0 +1,126 @@
+table workload_entries
+
+    column EntryId
+        dataType: string
+        sourceColumn: EntryId
+
+    column Date
+        dataType: dateTime
+        sourceColumn: Date
+
+    column TrainerId
+        dataType: string
+        sourceColumn: TrainerId
+
+    column CourseId
+        dataType: string
+        sourceColumn: CourseId
+
+    column SessionId
+        dataType: string
+        sourceColumn: SessionId
+
+    column Category
+        dataType: string
+        sourceColumn: Category
+
+    column Hours
+        dataType: double
+        sourceColumn: Hours
+
+    column Source
+        dataType: string
+        sourceColumn: Source
+
+    column Description
+        dataType: string
+        sourceColumn: Description
+
+    measure 'Total Workload Hours'
+        expression: SUM ( workload_entries[Hours] )
+
+    measure 'Contact Hours'
+        expression: CALCULATE (
+    [Total Workload Hours],
+    workload_entries[Category] = "Lesgeven"
+)
+
+    measure 'Preparation Hours'
+        expression: CALCULATE (
+    [Total Workload Hours],
+    workload_entries[Category] = "Voorbereiding"
+)
+
+    measure 'Aftercare Hours'
+        expression: CALCULATE (
+    [Total Workload Hours],
+    workload_entries[Category] = "Nazorg"
+)
+
+    measure 'Administration Hours'
+        expression: CALCULATE (
+    [Total Workload Hours],
+    workload_entries[Category] = "Administratie"
+)
+
+    measure 'Innovation Hours'
+        expression: CALCULATE (
+    [Total Workload Hours],
+    workload_entries[Category] = "AI/innovatie"
+)
+
+    measure 'Prep Contact Ratio'
+        expression: DIVIDE ( [Preparation Hours], [Contact Hours] )
+
+    measure 'Invisible Work Hours'
+        expression: [Total Workload Hours] - [Contact Hours]
+
+    measure 'Visibility Gap %'
+        expression: DIVIDE ( [Invisible Work Hours], [Total Workload Hours] )
+
+    measure 'Average Evaluation Score'
+        expression: DIVIDE (
+    SUMX ( evaluation_responses, evaluation_responses[AverageScore] * evaluation_responses[ResponseCount] ),
+    SUM ( evaluation_responses[ResponseCount] )
+)
+
+    measure 'Total Responses'
+        expression: SUM ( evaluation_responses[ResponseCount] )
+
+    measure 'New Topic Sessions'
+        expression: CALCULATE (
+    COUNTROWS ( sessions ),
+    sessions[IsNewTopic] = TRUE ()
+)
+
+    measure 'Workload Score'
+        expression: VAR ComplexityLoad =
+    AVERAGE ( courses[ComplexityScore] )
+VAR PrepRatio =
+    [Prep Contact Ratio]
+VAR Aftercare =
+    [Aftercare Hours]
+RETURN
+    [Total Workload Hours]
+        + ( ComplexityLoad * 2 )
+        + ( PrepRatio * 5 )
+        + ( Aftercare * 0.5 )
+
+    measure 'Fairness Flag'
+        expression: VAR Gap = [Visibility Gap %]
+VAR Score = [Average Evaluation Score]
+VAR PrepRatio = [Prep Contact Ratio]
+RETURN
+    SWITCH (
+        TRUE (),
+        Gap >= 0.55, "Hoge werkdruk, lage zichtbaarheid",
+        PrepRatio >= 0.8 && Score < 4.0, "Complex vak vraagt ondersteuning",
+        [Aftercare Hours] >= 8, "Veel nazorg na sessie",
+        [New Topic Sessions] >= 2, "Veel nieuwe onderwerpen",
+        "Geen opvallend signaal"
+    )
+
+    partition workload_entries
+        mode: import
+        source = CSV
+

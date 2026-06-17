@@ -1,0 +1,3 @@
+database FairWorkloadEvaluationCockpit
+    compatibilityLevel: 1600
+    model FairWorkloadEvaluationCockpit

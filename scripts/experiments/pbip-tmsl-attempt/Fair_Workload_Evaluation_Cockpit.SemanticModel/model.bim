@@ -1,0 +1,491 @@
+{
+  "name": "Fair_Workload_Evaluation_Cockpit",
+  "compatibilityLevel": 1600,
+  "model": {
+    "culture": "en-US",
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "discourageImplicitMeasures": true,
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "trainers",
+        "columns": [
+          {
+            "name": "TrainerId",
+            "dataType": "string",
+            "sourceColumn": "TrainerId"
+          },
+          {
+            "name": "Trainer",
+            "dataType": "string",
+            "sourceColumn": "Trainer"
+          },
+          {
+            "name": "Role",
+            "dataType": "string",
+            "sourceColumn": "Role"
+          },
+          {
+            "name": "Team",
+            "dataType": "string",
+            "sourceColumn": "Team"
+          }
+        ],
+        "measures": [],
+        "partitions": [
+          {
+            "name": "trainers",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\codex_pbi\\\\Documents\\\\GitHub\\\\PowerBi_Probeersel\\\\data\\\\trainers.csv\"), [Delimiter = \",\", Columns = 4, Encoding = 65001, QuoteStyle = QuoteStyle.None]),\n    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars = true])\nin\n    PromotedHeaders"
+            }
+          }
+        ]
+      },
+      {
+        "name": "courses",
+        "columns": [
+          {
+            "name": "CourseId",
+            "dataType": "string",
+            "sourceColumn": "CourseId"
+          },
+          {
+            "name": "Course",
+            "dataType": "string",
+            "sourceColumn": "Course"
+          },
+          {
+            "name": "Domain",
+            "dataType": "string",
+            "sourceColumn": "Domain"
+          },
+          {
+            "name": "ComplexityScore",
+            "dataType": "int64",
+            "sourceColumn": "ComplexityScore"
+          },
+          {
+            "name": "DefaultSessionType",
+            "dataType": "string",
+            "sourceColumn": "DefaultSessionType"
+          }
+        ],
+        "measures": [],
+        "partitions": [
+          {
+            "name": "courses",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\codex_pbi\\\\Documents\\\\GitHub\\\\PowerBi_Probeersel\\\\data\\\\courses.csv\"), [Delimiter = \",\", Columns = 5, Encoding = 65001, QuoteStyle = QuoteStyle.None]),\n    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars = true])\nin\n    PromotedHeaders"
+            }
+          }
+        ]
+      },
+      {
+        "name": "sessions",
+        "columns": [
+          {
+            "name": "SessionId",
+            "dataType": "string",
+            "sourceColumn": "SessionId"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date"
+          },
+          {
+            "name": "TrainerId",
+            "dataType": "string",
+            "sourceColumn": "TrainerId"
+          },
+          {
+            "name": "CourseId",
+            "dataType": "string",
+            "sourceColumn": "CourseId"
+          },
+          {
+            "name": "Audience",
+            "dataType": "string",
+            "sourceColumn": "Audience"
+          },
+          {
+            "name": "SessionType",
+            "dataType": "string",
+            "sourceColumn": "SessionType"
+          },
+          {
+            "name": "ContactHours",
+            "dataType": "int64",
+            "sourceColumn": "ContactHours"
+          },
+          {
+            "name": "IsNewTopic",
+            "dataType": "boolean",
+            "sourceColumn": "IsNewTopic"
+          },
+          {
+            "name": "Location",
+            "dataType": "string",
+            "sourceColumn": "Location"
+          },
+          {
+            "name": "Full Name",
+            "dataType": "string",
+            "kind": "calculatedColumn",
+            "expression": "RELATED(trainers[Trainer])"
+          }
+        ],
+        "measures": [],
+        "partitions": [
+          {
+            "name": "sessions",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\codex_pbi\\\\Documents\\\\GitHub\\\\PowerBi_Probeersel\\\\data\\\\sessions.csv\"), [Delimiter = \",\", Columns = 9, Encoding = 65001, QuoteStyle = QuoteStyle.None]),\n    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars = true])\nin\n    PromotedHeaders"
+            }
+          }
+        ]
+      },
+      {
+        "name": "workload_entries",
+        "columns": [
+          {
+            "name": "EntryId",
+            "dataType": "string",
+            "sourceColumn": "EntryId"
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date"
+          },
+          {
+            "name": "TrainerId",
+            "dataType": "string",
+            "sourceColumn": "TrainerId"
+          },
+          {
+            "name": "CourseId",
+            "dataType": "string",
+            "sourceColumn": "CourseId"
+          },
+          {
+            "name": "SessionId",
+            "dataType": "string",
+            "sourceColumn": "SessionId"
+          },
+          {
+            "name": "Category",
+            "dataType": "string",
+            "sourceColumn": "Category"
+          },
+          {
+            "name": "Hours",
+            "dataType": "double",
+            "sourceColumn": "Hours"
+          },
+          {
+            "name": "Source",
+            "dataType": "string",
+            "sourceColumn": "Source"
+          },
+          {
+            "name": "Description",
+            "dataType": "string",
+            "sourceColumn": "Description"
+          }
+        ],
+        "measures": [
+          {
+            "name": "Total Workload Hours",
+            "expression": "SUM ( workload_entries[Hours] )"
+          },
+          {
+            "name": "Contact Hours",
+            "expression": "CALCULATE (\n    [Total Workload Hours],\n    workload_entries[Category] = \"Lesgeven\"\n)"
+          },
+          {
+            "name": "Preparation Hours",
+            "expression": "CALCULATE (\n    [Total Workload Hours],\n    workload_entries[Category] = \"Voorbereiding\"\n)"
+          },
+          {
+            "name": "Aftercare Hours",
+            "expression": "CALCULATE (\n    [Total Workload Hours],\n    workload_entries[Category] = \"Nazorg\"\n)"
+          },
+          {
+            "name": "Administration Hours",
+            "expression": "CALCULATE (\n    [Total Workload Hours],\n    workload_entries[Category] = \"Administratie\"\n)"
+          },
+          {
+            "name": "Innovation Hours",
+            "expression": "CALCULATE (\n    [Total Workload Hours],\n    workload_entries[Category] = \"AI/innovatie\"\n)"
+          },
+          {
+            "name": "Prep Contact Ratio",
+            "expression": "DIVIDE ( [Preparation Hours], [Contact Hours] )"
+          },
+          {
+            "name": "Invisible Work Hours",
+            "expression": "[Total Workload Hours] - [Contact Hours]"
+          },
+          {
+            "name": "Visibility Gap %",
+            "expression": "DIVIDE ( [Invisible Work Hours], [Total Workload Hours] )"
+          },
+          {
+            "name": "Average Evaluation Score",
+            "expression": "DIVIDE (\n    SUMX ( evaluation_responses, evaluation_responses[AverageScore] * evaluation_responses[ResponseCount] ),\n    SUM ( evaluation_responses[ResponseCount] )\n)"
+          },
+          {
+            "name": "Total Responses",
+            "expression": "SUM ( evaluation_responses[ResponseCount] )"
+          },
+          {
+            "name": "New Topic Sessions",
+            "expression": "CALCULATE (\n    COUNTROWS ( sessions ),\n    sessions[IsNewTopic] = TRUE ()\n)"
+          },
+          {
+            "name": "Workload Score",
+            "expression": "VAR ComplexityLoad =\n    AVERAGE ( courses[ComplexityScore] )\nVAR PrepRatio =\n    [Prep Contact Ratio]\nVAR Aftercare =\n    [Aftercare Hours]\nRETURN\n    [Total Workload Hours]\n        + ( ComplexityLoad * 2 )\n        + ( PrepRatio * 5 )\n        + ( Aftercare * 0.5 )"
+          },
+          {
+            "name": "Fairness Flag",
+            "expression": "VAR Gap = [Visibility Gap %]\nVAR Score = [Average Evaluation Score]\nVAR PrepRatio = [Prep Contact Ratio]\nRETURN\n    SWITCH (\n        TRUE (),\n        Gap >= 0.55, \"Hoge werkdruk, lage zichtbaarheid\",\n        PrepRatio >= 0.8 && Score < 4.0, \"Complex vak vraagt ondersteuning\",\n        [Aftercare Hours] >= 8, \"Veel nazorg na sessie\",\n        [New Topic Sessions] >= 2, \"Veel nieuwe onderwerpen\",\n        \"Geen opvallend signaal\"\n    )"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "workload_entries",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\codex_pbi\\\\Documents\\\\GitHub\\\\PowerBi_Probeersel\\\\data\\\\workload_entries.csv\"), [Delimiter = \",\", Columns = 9, Encoding = 65001, QuoteStyle = QuoteStyle.None]),\n    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars = true])\nin\n    PromotedHeaders"
+            }
+          }
+        ]
+      },
+      {
+        "name": "evaluation_responses",
+        "columns": [
+          {
+            "name": "EvaluationId",
+            "dataType": "string",
+            "sourceColumn": "EvaluationId"
+          },
+          {
+            "name": "SessionId",
+            "dataType": "string",
+            "sourceColumn": "SessionId"
+          },
+          {
+            "name": "AverageScore",
+            "dataType": "double",
+            "sourceColumn": "AverageScore"
+          },
+          {
+            "name": "ResponseCount",
+            "dataType": "int64",
+            "sourceColumn": "ResponseCount"
+          },
+          {
+            "name": "Nps",
+            "dataType": "int64",
+            "sourceColumn": "Nps"
+          },
+          {
+            "name": "MainIssue",
+            "dataType": "string",
+            "sourceColumn": "MainIssue"
+          }
+        ],
+        "measures": [],
+        "partitions": [
+          {
+            "name": "evaluation_responses",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\codex_pbi\\\\Documents\\\\GitHub\\\\PowerBi_Probeersel\\\\data\\\\evaluation_responses.csv\"), [Delimiter = \",\", Columns = 6, Encoding = 65001, QuoteStyle = QuoteStyle.None]),\n    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars = true])\nin\n    PromotedHeaders"
+            }
+          }
+        ]
+      },
+      {
+        "name": "feedback_comments",
+        "columns": [
+          {
+            "name": "FeedbackId",
+            "dataType": "string",
+            "sourceColumn": "FeedbackId"
+          },
+          {
+            "name": "SessionId",
+            "dataType": "string",
+            "sourceColumn": "SessionId"
+          },
+          {
+            "name": "Theme",
+            "dataType": "string",
+            "sourceColumn": "Theme"
+          },
+          {
+            "name": "Sentiment",
+            "dataType": "string",
+            "sourceColumn": "Sentiment"
+          },
+          {
+            "name": "Comment",
+            "dataType": "string",
+            "sourceColumn": "Comment"
+          }
+        ],
+        "measures": [],
+        "partitions": [
+          {
+            "name": "feedback_comments",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\codex_pbi\\\\Documents\\\\GitHub\\\\PowerBi_Probeersel\\\\data\\\\feedback_comments.csv\"), [Delimiter = \",\", Columns = 5, Encoding = 65001, QuoteStyle = QuoteStyle.None]),\n    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars = true])\nin\n    PromotedHeaders"
+            }
+          }
+        ]
+      },
+      {
+        "name": "fairness_signals",
+        "columns": [
+          {
+            "name": "SignalId",
+            "dataType": "string",
+            "sourceColumn": "SignalId"
+          },
+          {
+            "name": "SignalDate",
+            "dataType": "dateTime",
+            "sourceColumn": "SignalDate"
+          },
+          {
+            "name": "SignalType",
+            "dataType": "string",
+            "sourceColumn": "SignalType"
+          },
+          {
+            "name": "TrainerId",
+            "dataType": "string",
+            "sourceColumn": "TrainerId"
+          },
+          {
+            "name": "CourseId",
+            "dataType": "string",
+            "sourceColumn": "CourseId"
+          },
+          {
+            "name": "Severity",
+            "dataType": "string",
+            "sourceColumn": "Severity"
+          },
+          {
+            "name": "Signal",
+            "dataType": "string",
+            "sourceColumn": "Signal"
+          },
+          {
+            "name": "RecommendedAction",
+            "dataType": "string",
+            "sourceColumn": "RecommendedAction"
+          }
+        ],
+        "measures": [],
+        "partitions": [
+          {
+            "name": "fairness_signals",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let\n    Source = Csv.Document(File.Contents(\"C:\\\\Users\\\\codex_pbi\\\\Documents\\\\GitHub\\\\PowerBi_Probeersel\\\\data\\\\fairness_signals.csv\"), [Delimiter = \",\", Columns = 8, Encoding = 65001, QuoteStyle = QuoteStyle.None]),\n    PromotedHeaders = Table.PromoteHeaders(Source, [PromoteAllScalars = true])\nin\n    PromotedHeaders"
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "rel_01",
+        "fromTable": "sessions",
+        "fromColumn": "TrainerId",
+        "toTable": "trainers",
+        "toColumn": "TrainerId",
+        "cardinality": "oneToMany",
+        "crossFilteringBehavior": "single"
+      },
+      {
+        "name": "rel_02",
+        "fromTable": "sessions",
+        "fromColumn": "CourseId",
+        "toTable": "courses",
+        "toColumn": "CourseId",
+        "cardinality": "oneToMany",
+        "crossFilteringBehavior": "single"
+      },
+      {
+        "name": "rel_03",
+        "fromTable": "workload_entries",
+        "fromColumn": "TrainerId",
+        "toTable": "trainers",
+        "toColumn": "TrainerId",
+        "cardinality": "oneToMany",
+        "crossFilteringBehavior": "single"
+      },
+      {
+        "name": "rel_04",
+        "fromTable": "workload_entries",
+        "fromColumn": "CourseId",
+        "toTable": "courses",
+        "toColumn": "CourseId",
+        "cardinality": "oneToMany",
+        "crossFilteringBehavior": "single"
+      },
+      {
+        "name": "rel_05",
+        "fromTable": "evaluation_responses",
+        "fromColumn": "SessionId",
+        "toTable": "sessions",
+        "toColumn": "SessionId",
+        "cardinality": "oneToMany",
+        "crossFilteringBehavior": "single"
+      },
+      {
+        "name": "rel_06",
+        "fromTable": "feedback_comments",
+        "fromColumn": "SessionId",
+        "toTable": "sessions",
+        "toColumn": "SessionId",
+        "cardinality": "oneToMany",
+        "crossFilteringBehavior": "single"
+      },
+      {
+        "name": "rel_07",
+        "fromTable": "fairness_signals",
+        "fromColumn": "TrainerId",
+        "toTable": "trainers",
+        "toColumn": "TrainerId",
+        "cardinality": "oneToMany",
+        "crossFilteringBehavior": "single"
+      },
+      {
+        "name": "rel_08",
+        "fromTable": "fairness_signals",
+        "fromColumn": "CourseId",
+        "toTable": "courses",
+        "toColumn": "CourseId",
+        "cardinality": "oneToMany",
+        "crossFilteringBehavior": "single"
+      }
+    ]
+  }
+}

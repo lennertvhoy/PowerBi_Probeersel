@@ -1,0 +1,109 @@
+{
+  "generated_at": "2026-05-15T15:14:38.424911",
+  "generator": "scripts/generate_tmdl_model.py",
+  "tables": [
+    "trainers",
+    "courses",
+    "sessions",
+    "workload_entries",
+    "evaluation_responses",
+    "feedback_comments",
+    "fairness_signals"
+  ],
+  "relationships": [
+    {
+      "from_table": "sessions",
+      "from_column": "TrainerId",
+      "to_table": "trainers",
+      "to_column": "TrainerId",
+      "cardinality": "many-to-one",
+      "direction": "single"
+    },
+    {
+      "from_table": "sessions",
+      "from_column": "CourseId",
+      "to_table": "courses",
+      "to_column": "CourseId",
+      "cardinality": "many-to-one",
+      "direction": "single"
+    },
+    {
+      "from_table": "workload_entries",
+      "from_column": "TrainerId",
+      "to_table": "trainers",
+      "to_column": "TrainerId",
+      "cardinality": "many-to-one",
+      "direction": "single"
+    },
+    {
+      "from_table": "workload_entries",
+      "from_column": "CourseId",
+      "to_table": "courses",
+      "to_column": "CourseId",
+      "cardinality": "many-to-one",
+      "direction": "single"
+    },
+    {
+      "from_table": "evaluation_responses",
+      "from_column": "SessionId",
+      "to_table": "sessions",
+      "to_column": "SessionId",
+      "cardinality": "many-to-one",
+      "direction": "single"
+    },
+    {
+      "from_table": "feedback_comments",
+      "from_column": "SessionId",
+      "to_table": "sessions",
+      "to_column": "SessionId",
+      "cardinality": "many-to-one",
+      "direction": "single"
+    },
+    {
+      "from_table": "fairness_signals",
+      "from_column": "TrainerId",
+      "to_table": "trainers",
+      "to_column": "TrainerId",
+      "cardinality": "many-to-one",
+      "direction": "single, nullable"
+    },
+    {
+      "from_table": "fairness_signals",
+      "from_column": "CourseId",
+      "to_table": "courses",
+      "to_column": "CourseId",
+      "cardinality": "many-to-one",
+      "direction": "single, nullable"
+    }
+  ],
+  "measures": [
+    "Total Workload Hours",
+    "Contact Hours",
+    "Preparation Hours",
+    "Aftercare Hours",
+    "Administration Hours",
+    "Innovation Hours",
+    "Prep Contact Ratio",
+    "Invisible Work Hours",
+    "Visibility Gap %",
+    "Average Evaluation Score",
+    "Total Responses",
+    "New Topic Sessions",
+    "Workload Score",
+    "Fairness Flag"
+  ],
+  "calculated_columns": [
+    {
+      "table": "sessions",
+      "name": "Full Name",
+      "expression": "RELATED(trainers[Trainer])"
+    }
+  ],
+  "output_dir": "C:\\Users\\codex_pbi\\Documents\\GitHub\\PowerBi_Probeersel\\powerbi\\tmdl_generated",
+  "warnings": [
+    "This is a draft TMDL skeleton. Column data types are inferred heuristically.",
+    "Partitions use placeholder 'CSV' source; real PBIP requires Mashup/Power Query definitions.",
+    "Measures are attached to workload_entries table as a heuristic.",
+    "Validate with pbi-tools convert or Tabular Editor before claiming production readiness."
+  ]
+}

@@ -1,0 +1,26 @@
+table courses
+
+    column CourseId
+        dataType: string
+        sourceColumn: CourseId
+
+    column Course
+        dataType: string
+        sourceColumn: Course
+
+    column Domain
+        dataType: string
+        sourceColumn: Domain
+
+    column ComplexityScore
+        dataType: int64
+        sourceColumn: ComplexityScore
+
+    column DefaultSessionType
+        dataType: string
+        sourceColumn: DefaultSessionType
+
+    partition courses
+        mode: import
+        source = CSV
+

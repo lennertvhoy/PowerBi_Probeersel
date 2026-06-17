@@ -1,0 +1,26 @@
+table feedback_comments
+
+    column FeedbackId
+        dataType: string
+        sourceColumn: FeedbackId
+
+    column SessionId
+        dataType: string
+        sourceColumn: SessionId
+
+    column Theme
+        dataType: string
+        sourceColumn: Theme
+
+    column Sentiment
+        dataType: string
+        sourceColumn: Sentiment
+
+    column Comment
+        dataType: string
+        sourceColumn: Comment
+
+    partition feedback_comments
+        mode: import
+        source = CSV
+

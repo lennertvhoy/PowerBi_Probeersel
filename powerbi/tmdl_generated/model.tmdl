@@ -1,0 +1,11 @@
+model FairWorkloadEvaluationCockpit
+    culture 'en-US'
+        linguaModel: en-US
+        translatedCaption: trainers
+        translatedCaption: courses
+        translatedCaption: sessions
+        translatedCaption: workload_entries
+        translatedCaption: evaluation_responses
+        translatedCaption: feedback_comments
+        translatedCaption: fairness_signals
+

@@ -14,7 +14,7 @@ Use this file for dated session notes, verification summaries, and references to
 - Ran initial bootstrap inspection of system, repo structure, skills installation, Git metadata, and active listeners.
 - Normalized Power Platform skills into canonical `skills/power-platform/`.
 - Replaced Claude-only skill copy with symlink adapters for `.claude/skills/`, `.codex/skills/`, and `.kimi/plugins/`.
-- Added Gemini CLI context through root `GEMINI.md` and `.gemini/extensions/power-platform-skills/`.
+- Added Gemini CLI context through root `GEMINI.md` and `.gemini/extensions/power-platform-skills`.
 - Added Codex UI metadata files under each skill's `agents/openai.yaml`.
 - Removed extracted source clone directories after their contents were installed into canonical repo paths.
 - Completed product bootstrap for the Fair Workload & Evaluation Cockpit.
