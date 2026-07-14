@@ -44,12 +44,12 @@ Belangrijke projectbestanden:
 
 ---
 
-# State Driven Development Template
+# StateSpec workflow
 
 AI-assisted software projects drift.
 
 Context decays, repo truth falls behind runtime truth, and important decisions
-disappear into chat history. State Driven Development gives humans and coding
+disappear into chat history. StateSpec gives humans and coding
 agents a shared source of truth in the repo: live state, a short active queue,
 evidence for claims, and clean handoffs between planning and execution.
 

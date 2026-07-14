@@ -1,9 +1,16 @@
 # PROJECT_STATE.yaml - Structured current truth
 
 metadata:
-  updated_at: 2026-06-04T11:20:00+02:00
-  updated_by: agent
+  updated_at: 2026-07-14T00:00:00+02:00
+  updated_by: stateware_public_naming_compatibility
   version: "statedd-template-v3"
+
+terminology:
+  category: Stateware
+  methodology: State-Centric Engineering
+  portable_specification: StateSpec
+  legacy_identifier: StateDD
+  migration_status: public_names_migrated_machine_identifiers_preserved
 
 workflow:
   repo_mode: operating
@@ -161,14 +168,14 @@ current_state:
     deployment_assumptions:
       - first artifact target is a local Power BI Desktop report
       - source data is fictive and safe for demo use
-      - StateDD workflow assets are available for repo governance
+      - StateSpec workflow assets are available for repo governance
       - Power Platform skills are available under skills/power-platform with symlink adapters
       - Windows GUI MCP agent is available for Power BI Desktop automation
       - Tabular Editor 2.28.0 installed for semantic model automation
       - pbi-tools 1.2.0 Core installed for compile/convert (extract absent in Core)
       - TMDL generator skeleton created at scripts/generate_tmdl_model.py
     contradictions:
-      - README.md still contains the generic StateDD template guide below the project overview
+      - README.md retains the generic StateSpec guide below the project overview
       - no PBIX/PBIP exists yet; report UX is browser-preview verified but not Power BI runtime verified
       - PROJECT_STATE.yaml head was stale (0319bff) relative to actual git head (0e549a5) until this update
 

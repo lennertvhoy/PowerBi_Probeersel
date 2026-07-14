@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regression tests for the StateDD initializer.
+"""Regression tests for the StateSpec initializer.
 
 These tests intentionally stay stdlib-only so template maintainers and
 downstream repos can run them without installing a test framework.

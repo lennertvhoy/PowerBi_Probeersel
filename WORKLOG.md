@@ -2,6 +2,13 @@
 
 **Purpose:** Append-only history for completed work.
 
+## 2026-07-14 - Stateware public naming compatibility
+
+- Adopted Stateware, State-Centric Engineering, and StateSpec in current public and operator-facing workflow text.
+- Preserved `statedd-*` commands, schemas, format versions, and historical records as compatibility identifiers.
+- Updated initializer/help presentation while retaining legacy template detection.
+- Verified structured YAML, initializer regression tests, state-document validation, and diff hygiene.
+
 Use this file for dated session notes, verification summaries, and references to evidence artifacts.
 
 ## 2026-05-13

@@ -3,6 +3,13 @@
 version: "statedd-template-v3"
 schema_version: "1.0"
 
+terminology:
+  category: Stateware
+  methodology: State-Centric Engineering
+  portable_specification: StateSpec
+  compatibility:
+    - StateDD machine identifiers remain supported until a versioned migration.
+
 product:
   name: "PowerBi_Probeersel"
   one_sentence: "Manager demo for a Power BI cockpit that makes invisible trainer workload visible and evaluation discussions fairer."

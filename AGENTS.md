@@ -1,10 +1,16 @@
 ---
 repo_mode: "operating"
 initialized_on: 2026-05-13
-last_updated: "2026-06-14"
+last_updated: "2026-07-14"
 project: "PowerBi_Probeersel"
 ---
-# State Driven Development Template Contract
+# StateSpec template contract
+
+This repository uses **Stateware** for the product category,
+**State-Centric Engineering** for the method, and **StateSpec** for the
+portable specification. Existing `StateDD` paths, commands, schemas, format
+versions, and historical records remain compatibility identifiers. See
+`docs/NAMING_AND_COMPATIBILITY.md`.
 
 **Purpose:** Stable operating contract for technical projects that use explicit state, evidence, and short active queues.
 

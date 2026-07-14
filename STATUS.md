@@ -1,6 +1,6 @@
 # PowerBi_Probeersel Status
 
-**Updated At:** 2026-06-04 11:20 CEST
+**Updated At:** 2026-07-14
 **Execution Mode:** operating
 **Project State:** pbip_seed_attempted
 
@@ -36,6 +36,7 @@
 
 ## Notes
 
+- Current public workflow terminology is StateSpec; legacy StateDD machine identifiers remain compatible.
 - Keep `STATUS.md` short.
 - Use `PROJECT_STATE.yaml` for structured truth.
 - Use `BACKLOG.md` backlog IDs inside `NEXT_ACTIONS.md` when active items are added.

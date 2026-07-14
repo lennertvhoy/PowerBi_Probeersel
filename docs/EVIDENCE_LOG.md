@@ -2,6 +2,17 @@
 
 **Purpose:** Structured ledger of proof artifacts for user-facing claims.
 
+## Stateware public naming compatibility
+
+- ID: EV-2026-07-14-STATEWARE-NAMING
+  Source/System: repository_validation
+  Action: Adopted current Stateware, State-Centric Engineering, and StateSpec presentation while preserving legacy machine identifiers.
+  Proves:
+    - current public workflow wording uses StateSpec
+    - legacy commands, paths, schemas, versions, and history remain compatible
+  Type: docs-render-verification
+  as_of: 2026-07-14T00:00:00+02:00
+
 ## Entry Format
 
 ```yaml
